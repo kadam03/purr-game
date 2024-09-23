@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://djxulxg4xla8n"]
+
+[ext_resource type="Texture2D" uid="uid://c3rxwfhswjwg8" path="res://Asset/Image/Img_BucketFrame.png" id="1_lgtty"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8alnw"]
+
+[node name="Bucket" type="Node2D"]
+
+[node name="ImgBucketFrame" type="Sprite2D" parent="."]
+scale = Vector2(0.667544, 0.667544)
+texture = ExtResource("1_lgtty")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2DBottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 579)
+shape = SubResource("WorldBoundaryShape2D_8alnw")
+
+[node name="CollisionShape2DLeft" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-316, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_8alnw")
+
+[node name="CollisionShape2DRight" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(306, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_8alnw")
