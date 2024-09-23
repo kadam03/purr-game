@@ -5,6 +5,7 @@ var cica
 var mouse_pressed: bool = false
 @onready var lim_left = $SpawnLimiters/LimiterLeft
 @onready var lim_right = $SpawnLimiters/LimiterRight
+@export var balls: Array[PackedScene]
 
 var is_click_on_cooldown = false  # To track the 200 ms cooldown
 
@@ -18,7 +19,6 @@ func _ready():
 	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
 	cooldown_timer.connect("timeout",  _on_Cooldown_timeout)
 	add_child(cooldown_timer)  # Add the timer to the scene
-
 
 
 var pos_x

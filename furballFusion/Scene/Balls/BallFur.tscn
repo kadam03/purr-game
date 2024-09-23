@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciy4d1ipbxinb"]
+
+[ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/Ball.tscn" id="1_yfdv3"]
+[ext_resource type="Texture2D" uid="uid://obxpju2oka6t" path="res://Asset/Image/Cats/Img_Furball.png" id="2_ftg8c"]
+
+[node name="Ball" instance=ExtResource("1_yfdv3")]
+ball_value = 10
+ball_texture = ExtResource("2_ftg8c")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_ftg8c")
