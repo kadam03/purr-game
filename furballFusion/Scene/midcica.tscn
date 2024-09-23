@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4xew44e7e57v"]
+
+[ext_resource type="Script" path="res://Script/midcica.gd" id="1_te7w5"]
+[ext_resource type="Texture2D" uid="uid://ty5pd85ftlmr" path="res://Asset/Image/Cats/Img_VoidCat2.png" id="2_1x31c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agrun"]
+friction = 0.5
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6i0wy"]
+radius = 11.6831
+
+[node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_agrun")
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_te7w5")
+
+[node name="ImgVoidCat2" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.368182, 0.495902)
+texture = ExtResource("2_1x31c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(4.53648, 4.53648)
+shape = SubResource("CircleShape2D_6i0wy")

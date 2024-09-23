@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqc4h6xemsb3e"]
+
+[ext_resource type="Texture2D" uid="uid://btogiabdedeu4" path="res://Asset/Image/Cats/Img_VoidCat3.png" id="1_evm6i"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agrun"]
+friction = 0.5
+bounce = 0.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6i0wy"]
+radius = 11.6831
+
+[node name="Ball" type="RigidBody2D" groups=["collidable"]]
+physics_material_override = SubResource("PhysicsMaterial_agrun")
+
+[node name="ImgVoidCat2" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.368182, 0.495902)
+texture = ExtResource("1_evm6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(4.53648, 4.53648)
+shape = SubResource("CircleShape2D_6i0wy")
