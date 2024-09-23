@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/Ball.tscn" id="1_uanur"]
 [ext_resource type="Texture2D" uid="uid://h6w2th0fybhs" path="res://Asset/Image/Cats/Img_Paw.png" id="2_t07l0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0oell"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_plblw"]
 radius = 33.5
 
 [node name="Ball" instance=ExtResource("1_uanur")]
@@ -12,4 +12,4 @@ radius = 33.5
 texture = ExtResource("2_t07l0")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_0oell")
+shape = SubResource("CircleShape2D_plblw")
