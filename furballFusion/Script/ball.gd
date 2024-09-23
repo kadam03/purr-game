@@ -9,9 +9,9 @@ extends RigidBody2D
 @onready var collision_shape = $CollisionShape2D
 #
 func _ready() -> void:
+	collision_shape.shape = collision_shape.shape.duplicate()
 	sprite.texture = ball_texture
 	sprite.scale = Vector2(ball_size, ball_size)
-	collision_shape.scale = sprite.scale
 	update_ball_properties()
 	
 func _process(delta: float) -> void:

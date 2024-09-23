@@ -11,8 +11,6 @@ radius = 33.5
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_agrun")
-freeze_mode = 1
-continuous_cd = 2
 script = ExtResource("1_1ch0q")
 ball_value = 5
 ball_texture = ExtResource("2_fapee")
