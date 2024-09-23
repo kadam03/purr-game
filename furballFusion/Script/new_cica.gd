@@ -1,7 +1,21 @@
 extends RigidBody2D
 
+@export var new_scene:PackedScene
+@export var groupname:String
+
+func _ready():
+	# Add to the group and connect collision signal
+	add_to_group(groupname)
+	connect("body_entered", _on_Ball_collided)
+
+func _on_Ball_collided(cica):
+	# Ensure that only one ball handles the collision
+	cica_pacsi(self,cica,new_scene,groupname)
+
+
 func cica_pacsi(egy_cica,ket_cica,new_scene,group):
 	# Ensure that only one ball handles the collision
+	print(group)
 	if egy_cica.get_rid() < ket_cica.get_rid() and ket_cica.is_in_group(group):
 		
 		# Get the position where the new Ball2 should be instanced

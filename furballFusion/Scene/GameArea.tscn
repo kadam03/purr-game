@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://blspr8v2do5fm"]
+[gd_scene load_steps=6 format=3 uid="uid://blspr8v2do5fm"]
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
+[ext_resource type="PackedScene" uid="uid://cyn6twwa5tvoc" path="res://Scene/kiscica.tscn" id="2_3dk1n"]
+[ext_resource type="PackedScene" uid="uid://otqbq4ktpw87" path="res://Scene/midcica.tscn" id="3_f0052"]
+[ext_resource type="PackedScene" uid="uid://c5q6lrp4phmsq" path="res://Scene/nagycica.tscn" id="4_s8jun"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
+cicak = Array[PackedScene]([ExtResource("2_3dk1n"), ExtResource("3_f0052"), ExtResource("4_s8jun")])
 
 [node name="Bucket" parent="." instance=ExtResource("1_yhuax")]
 position = Vector2(364, 659)
