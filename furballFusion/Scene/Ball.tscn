@@ -1,21 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsbia1rghqca1"]
+[gd_scene load_steps=5 format=3 uid="uid://dsbia1rghqca1"]
 
-[ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Cats/Img_VoidCat.png" id="1_uj0bl"]
+[ext_resource type="Script" path="res://Script/ball.gd" id="1_1ch0q"]
+[ext_resource type="Texture2D" uid="uid://h6w2th0fybhs" path="res://Asset/Image/Cats/Img_Paw.png" id="2_fapee"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agrun"]
 friction = 0.5
-bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6i0wy"]
-radius = 11.6831
+radius = 33.5
 
 [node name="Ball" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_agrun")
+freeze_mode = 1
+continuous_cd = 2
+script = ExtResource("1_1ch0q")
+ball_value = 5
+ball_texture = ExtResource("2_fapee")
 
-[node name="ImgVoidCat" type="Sprite2D" parent="."]
-scale = Vector2(1, 1)
-texture = ExtResource("1_uj0bl")
+[node name="Sprite" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(4.53648, 4.53648)
 shape = SubResource("CircleShape2D_6i0wy")

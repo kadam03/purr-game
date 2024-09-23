@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://blspr8v2do5fm"]
+[gd_scene load_steps=7 format=3 uid="uid://blspr8v2do5fm"]
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
+[ext_resource type="PackedScene" uid="uid://c8injvu4yewml" path="res://Scene/Balls/BallPaw.tscn" id="2_v3hat"]
+[ext_resource type="PackedScene" uid="uid://ciy4d1ipbxinb" path="res://Scene/Balls/BallFur.tscn" id="3_gk8oi"]
+[ext_resource type="PackedScene" uid="uid://bkhioilmem7qc" path="res://Scene/Balls/BallLineball.tscn" id="4_6h6xc"]
+[ext_resource type="PackedScene" uid="uid://dvyg0bj00ln24" path="res://Scene/Balls/BallTruffle.tscn" id="5_6weor"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
+balls = Array[PackedScene]([ExtResource("2_v3hat"), ExtResource("3_gk8oi"), ExtResource("4_6h6xc"), ExtResource("5_6weor")])
 
 [node name="Bucket" parent="." instance=ExtResource("1_yhuax")]
 position = Vector2(364, 659)

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8injvu4yewml"]
+
+[ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/Ball.tscn" id="1_uanur"]
+[ext_resource type="Texture2D" uid="uid://h6w2th0fybhs" path="res://Asset/Image/Cats/Img_Paw.png" id="2_t07l0"]
+
+[node name="Ball" instance=ExtResource("1_uanur")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_t07l0")
