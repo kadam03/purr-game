@@ -26,3 +26,9 @@ ball_textures = Array[Texture2D]([ExtResource("2_t7skv"), ExtResource("3_e3vff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6i0wy")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+fit_content = true
+tab_size = 8

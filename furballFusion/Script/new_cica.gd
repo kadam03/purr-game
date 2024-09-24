@@ -8,12 +8,14 @@ var groupname:String
 @export var ball_textures: Array[Texture2D]
 @onready var sprite = $Sprite
 @onready var collision_shape = $CollisionShape2D
+@onready var label = $RichTextLabel
 var ball_texture:Texture2D
 var number_of_textures:int
 var curent_id:int
 func _ready():
 	number_of_textures = ball_textures.size()
-	curent_id=(randi() % number_of_textures-1)
+	curent_id=(randi_range(0,number_of_textures-1))
+	label.add_text(str(curent_id))
 	ball_texture = ball_textures[curent_id]
 	collision_shape.shape = collision_shape.shape.duplicate()
 	sprite.texture = ball_texture
@@ -51,7 +53,7 @@ func _on_Ball_collided(catball:RigidBody2D):
 		if not new_scene:
 			new_scene=load("res://Scene/Ball.tscn")
 		var new_cica = new_scene.instantiate()
-		ball_texture = ball_textures[ball_textures.find(catball.ball_texture,0) + 1]
+		ball_texture = ball_textures[min(ball_textures.size()-1,ball_textures.find(catball.ball_texture,0) + 1)]
 		new_cica.position = new_position
 		
 		# Add the new Ball2 to the scene tree
