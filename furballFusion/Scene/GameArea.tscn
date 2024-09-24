@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://blspr8v2do5fm"]
+[gd_scene load_steps=10 format=3 uid="uid://blspr8v2do5fm"]
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://ciy4d1ipbxinb" path="res://Scene/Balls/BallFur.tscn" id="3_gk8oi"]
 [ext_resource type="PackedScene" uid="uid://bkhioilmem7qc" path="res://Scene/Balls/BallLineball.tscn" id="4_6h6xc"]
 [ext_resource type="PackedScene" uid="uid://dvyg0bj00ln24" path="res://Scene/Balls/BallTruffle.tscn" id="5_6weor"]
+[ext_resource type="PackedScene" uid="uid://cyn6twwa5tvoc" path="res://Scene/kiscica.tscn" id="5_o58eh"]
+[ext_resource type="PackedScene" uid="uid://otqbq4ktpw87" path="res://Scene/midcica.tscn" id="6_6tngg"]
+[ext_resource type="PackedScene" uid="uid://c5q6lrp4phmsq" path="res://Scene/nagycica.tscn" id="7_qr63n"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
+cicak = Array[PackedScene]([ExtResource("3_gk8oi"), ExtResource("4_6h6xc"), ExtResource("5_6weor"), ExtResource("5_6weor"), ExtResource("5_o58eh"), ExtResource("6_6tngg"), ExtResource("7_qr63n")])
 balls = Array[PackedScene]([ExtResource("2_v3hat"), ExtResource("3_gk8oi"), ExtResource("4_6h6xc"), ExtResource("5_6weor")])
 
 [node name="Bucket" parent="." instance=ExtResource("1_yhuax")]
