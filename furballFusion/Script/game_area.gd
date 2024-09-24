@@ -1,11 +1,11 @@
 extends Node2D
 
-@export var cicak: Array[PackedScene]
 var cica
 var mouse_pressed: bool = false
 @onready var lim_left = $SpawnLimiters/LimiterLeft
 @onready var lim_right = $SpawnLimiters/LimiterRight
-@export var balls: Array[PackedScene]
+@export var general_ball: PackedScene
+
 
 var is_click_on_cooldown = false  # To track the 200 ms cooldown
 
@@ -23,7 +23,7 @@ func _ready():
 
 var pos_x
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if mouse_pressed and cica != null:
 		pos_x = get_viewport().get_mouse_position().x
 		if pos_x < lim_left.position.x:
@@ -39,8 +39,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed("mouse_click") and cica == null:
 		mouse_pressed = true
-		var cicascene = cicak[randi() % cicak.size()]
-		cica = cicascene.instantiate()
+		cica = general_ball.instantiate()
 		cica.position.y = lim_left.position.y
 		#ball.position = Vector2(get_viewport().get_mouse_position().x, lim_left.position.y)
 		cica.freeze = true
