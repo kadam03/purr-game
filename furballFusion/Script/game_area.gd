@@ -1,5 +1,6 @@
 extends Node2D
 
+const COOLDOWN =0.1
 var cica
 var mouse_pressed: bool = false
 @onready var lim_left = $SpawnLimiters/LimiterLeft
@@ -15,7 +16,7 @@ var cooldown_timer = null
 func _ready():
 	# Create and setup the cooldown timer
 	cooldown_timer = Timer.new()
-	cooldown_timer.set_wait_time(0.3) 
+	cooldown_timer.set_wait_time(COOLDOWN) 
 	cooldown_timer.set_one_shot(true)  # The timer should stop after one timeout
 	cooldown_timer.connect("timeout",  _on_Cooldown_timeout)
 	add_child(cooldown_timer)  # Add the timer to the scene

@@ -8,20 +8,15 @@ var groupname:String
 @export var ball_textures: Array[Texture2D]
 @onready var sprite = $Sprite
 @onready var collision_shape = $CollisionShape2D
-@onready var label = $RichTextLabel
 var ball_texture:Texture2D
 var number_of_textures:int
 var curent_id:int
 func _ready():
 	number_of_textures = ball_textures.size()
-	curent_id=(randi_range(0,number_of_textures-1))
-	label.add_text(str(curent_id))
+	curent_id=(randi_range(0,min(number_of_textures-1,3)))
 	ball_texture = ball_textures[curent_id]
 	collision_shape.shape = collision_shape.shape.duplicate()
-	sprite.texture = ball_texture
-	sprite.scale = Vector2(ball_size, ball_size)
 	update_ball_properties()
-	add_to_group(ball_texture.resource_path)
 	connect("body_entered", _on_Ball_collided)
 
 func _process(_delta: float) -> void:
@@ -31,6 +26,7 @@ func _process(_delta: float) -> void:
 
 # Update the ball's visual and physical properties
 func update_ball_properties() -> void:
+	add_to_group(ball_texture.resource_path)
 	if sprite and ball_texture:
 		sprite.texture = ball_texture
 		sprite.scale = Vector2(ball_size, ball_size)
@@ -41,24 +37,17 @@ func update_ball_properties() -> void:
 		collision_shape.shape.radius = radius
 		
 		
-func _on_Ball_collided(catball:RigidBody2D):
+func _on_Ball_collided(catball):
 
 	var  group=self.ball_texture.resource_path
 	if self.get_rid() < catball.get_rid() and catball.is_in_group(group) and curent_id < number_of_textures-1:
-		
-		# Get the position where the new Ball2 should be instanced
+		remove_from_group(ball_texture.resource_path)
+		curent_id+=1
 		var new_position = (self.position + catball.position) / 2
-		
-		# Replace both Balls with a Ball2 instance
-		if not new_scene:
-			new_scene=load("res://Scene/Ball.tscn")
-		var new_cica = new_scene.instantiate()
-		ball_texture = ball_textures[min(ball_textures.size()-1,ball_textures.find(catball.ball_texture,0) + 1)]
-		new_cica.position = new_position
-		
-		# Add the new Ball2 to the scene tree
-		catball.get_parent().add_child(new_cica)
-		
-		# Remove both Balls from the scene
-		self.queue_free()
+		self.position = new_position
+		self.ball_texture = ball_textures[curent_id]
+		#print(str(curent_id))
+		#ball_texture = 
+		#sprite.texture = ball_texture
+		update_ball_properties()
 		catball.queue_free()
