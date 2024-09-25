@@ -47,9 +47,9 @@ func update_ball_properties() -> void:
 		collision_shape.shape.radius = radius
 		
 		
-func _on_Ball_collided(catball:RigidBody2D):
+func _on_Ball_collided(catball):
 
-	if catball.current_type == "ball" and self.current_type == "cat" and catball.is_in_group(str(current_id)) and current_id < number_of_textures-1:
+	if  catball is RigidBody2D and catball.current_type == "ball" and self.current_type == "cat" and catball.is_in_group(str(current_id)) and current_id < number_of_textures-1:
 		remove_from_group(str(current_id))
 		current_id+=1
 		var new_position = (self.position + catball.position) / 2
