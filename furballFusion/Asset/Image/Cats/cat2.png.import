@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daarcwu37djhu"
-path="res://.godot/imported/Img_Truffle.png-290f129bbce4c9131c6e7066349802aa.ctex"
+uid="uid://d1qwbm1pq46co"
+path="res://.godot/imported/cat2.png-7ed7dbb388801e434eaba7ccf3e757ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_Truffle.png"
-dest_files=["res://.godot/imported/Img_Truffle.png-290f129bbce4c9131c6e7066349802aa.ctex"]
+source_file="res://Asset/Image/Cats/cat2.png"
+dest_files=["res://.godot/imported/cat2.png-7ed7dbb388801e434eaba7ccf3e757ed.ctex"]
 
 [params]
 

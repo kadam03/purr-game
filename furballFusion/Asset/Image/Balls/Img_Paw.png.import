@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://h6w2th0fybhs"
-path="res://.godot/imported/Img_Paw.png-f5f867f59a5eb9571cc2ee197ff050c3.ctex"
+path="res://.godot/imported/Img_Paw.png-59c995d451580bb05089e596f8e7d4e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_Paw.png"
-dest_files=["res://.godot/imported/Img_Paw.png-f5f867f59a5eb9571cc2ee197ff050c3.ctex"]
+source_file="res://Asset/Image/Balls/Img_Paw.png"
+dest_files=["res://.godot/imported/Img_Paw.png-59c995d451580bb05089e596f8e7d4e4.ctex"]
 
 [params]
 

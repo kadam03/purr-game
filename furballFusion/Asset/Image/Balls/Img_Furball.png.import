@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccie5kqbtlnks"
-path="res://.godot/imported/Img_VoidCat.png-1c135ade7b5822956e4dbd843973a58c.ctex"
+uid="uid://obxpju2oka6t"
+path="res://.godot/imported/Img_Furball.png-e0742844171c11c99f3c90878359ccbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_VoidCat.png"
-dest_files=["res://.godot/imported/Img_VoidCat.png-1c135ade7b5822956e4dbd843973a58c.ctex"]
+source_file="res://Asset/Image/Balls/Img_Furball.png"
+dest_files=["res://.godot/imported/Img_Furball.png-e0742844171c11c99f3c90878359ccbe.ctex"]
 
 [params]
 

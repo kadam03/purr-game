@@ -1,0 +1,29 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsbia1rghqca1"]
+
+[ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
+[ext_resource type="Texture2D" uid="uid://obxpju2oka6t" path="res://Asset/Image/Balls/Img_Furball.png" id="2_t7skv"]
+[ext_resource type="Texture2D" uid="uid://m2fsbqvl3gu3" path="res://Asset/Image/Balls/Img_Lineball.png" id="3_e3vff"]
+[ext_resource type="Texture2D" uid="uid://h6w2th0fybhs" path="res://Asset/Image/Balls/Img_Paw.png" id="4_163ys"]
+[ext_resource type="Texture2D" uid="uid://c5k4784hh1v8n" path="res://Asset/Image/Cats/ca1.png" id="5_bhaml"]
+[ext_resource type="Texture2D" uid="uid://d1qwbm1pq46co" path="res://Asset/Image/Cats/cat2.png" id="6_t2fho"]
+[ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Cats/cat4.png" id="7_7vy1v"]
+[ext_resource type="Texture2D" uid="uid://bynvbc8vprpr5" path="res://Asset/Image/Cats/cat3.png" id="7_id8x4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agrun"]
+friction = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6i0wy"]
+radius = 42.0
+
+[node name="CatOrBall" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_agrun")
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_uq4wu")
+ball_textures = Array[Texture2D]([ExtResource("2_t7skv"), ExtResource("3_e3vff"), ExtResource("4_163ys"), ExtResource("4_163ys")])
+cat_textures = Array[Texture2D]([ExtResource("5_bhaml"), ExtResource("6_t2fho"), ExtResource("7_id8x4"), ExtResource("7_7vy1v")])
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6i0wy")
