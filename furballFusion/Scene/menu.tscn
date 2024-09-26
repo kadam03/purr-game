@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://be6v0tv1uvxb4"]
+
+[ext_resource type="Script" path="res://Script/menu.gd" id="1_55fia"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(270, 642)
+script = ExtResource("1_55fia")
+
+[node name="Restart" type="Button" parent="."]
+offset_right = 92.0
+offset_bottom = 44.0
+text = "Restart"
+
+[node name="End" type="Button" parent="."]
+offset_left = 133.0
+offset_right = 225.0
+offset_bottom = 44.0
+text = "End"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="End" to="." method="_on_end_pressed"]

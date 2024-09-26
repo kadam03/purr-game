@@ -7,6 +7,7 @@ const COOLDOWN =0.1
 @onready var score_label: RichTextLabel = $Score
 
 @export var cat_or_ball_scene: PackedScene
+@export var menu_scene: PackedScene
 
 var cat_or_ball= null
 var mouse_pressed: bool = false
@@ -37,23 +38,27 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	# Block further mouse input if cooldown is active
-	if is_click_on_cooldown:
-		return
-	if event.is_action_pressed("mouse_click") and cat_or_ball == null:
-		mouse_pressed = true
-		cat_or_ball = cat_or_ball_scene.instantiate()
-		cat_or_ball.position.y = lim_left.position.y
-		#ball.position = Vector2(get_viewport().get_mouse_position().x, lim_left.position.y)
-		cat_or_ball.freeze = true
-		add_child(cat_or_ball)
-		# Start the cooldown timer after kiscica is added
-	
-	if event.is_action_released("mouse_click") and cat_or_ball != null:
-		mouse_pressed = false
-		cat_or_ball.freeze = false
-		cat_or_ball = null
-		is_click_on_cooldown = true
-		cooldown_timer.start()
+	if Global.gameover:
+		var menu=menu_scene.instantiate()
+		add_child(menu)
+	else:
+		if is_click_on_cooldown:
+			return
+		if event.is_action_pressed("mouse_click") and cat_or_ball == null:
+			mouse_pressed = true
+			cat_or_ball = cat_or_ball_scene.instantiate()
+			cat_or_ball.position.y = lim_left.position.y
+			#ball.position = Vector2(get_viewport().get_mouse_position().x, lim_left.position.y)
+			cat_or_ball.freeze = true
+			add_child(cat_or_ball)
+			# Start the cooldown timer after kiscica is added
+		
+		if event.is_action_released("mouse_click") and cat_or_ball != null:
+			mouse_pressed = false
+			cat_or_ball.freeze = false
+			cat_or_ball = null
+			is_click_on_cooldown = true
+			cooldown_timer.start()
 		
 func _on_Cooldown_timeout():
 	# Reset the cooldown state after 200 milliseconds
