@@ -1,17 +1,18 @@
 extends Node2D
 
 const COOLDOWN =0.1
-var cat_or_ball
-var mouse_pressed: bool = false
-@onready var lim_left = $SpawnLimiters/LimiterLeft
-@onready var lim_right = $SpawnLimiters/LimiterRight
+
+@onready var lim_right: Node2D = $SpawnLimiters/LimiterRight
+@onready var lim_left: Node2D = $SpawnLimiters/LimiterLeft
+@onready var score_label: RichTextLabel = $Score
+
 @export var cat_or_ball_scene: PackedScene
 
-
-var is_click_on_cooldown = false  # To track the 200 ms cooldown
-
-# Timer node to control cooldown
+var cat_or_ball= null
+var mouse_pressed: bool = false
+var is_click_on_cooldown = false 
 var cooldown_timer = null
+
 
 func _ready():
 	# Create and setup the cooldown timer
@@ -32,7 +33,7 @@ func _process(_delta: float) -> void:
 		if pos_x > lim_right.position.x:
 			pos_x = lim_right.position.x
 		cat_or_ball.position.x = pos_x	
-		
+		score_label.text = "Your score: " + str(Global.score)
 
 func _input(event: InputEvent) -> void:
 	# Block further mouse input if cooldown is active

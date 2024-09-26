@@ -18,3 +18,14 @@ position = Vector2(90, 80)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
 position = Vector2(629, 80)
+
+[node name="Score" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = 74.0
+offset_top = 25.0
+offset_right = 403.0
+offset_bottom = 63.0
+theme_override_font_sizes/normal_font_size = 20
+text = "Your Score: 0"
+fit_content = true
+tab_size = 9
