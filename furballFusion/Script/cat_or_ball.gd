@@ -4,9 +4,12 @@ const MAX_INIT_INDEX: int  = 2
 const SCORE_MULTIPLIER:int  = 10
 const IMAGE_SCALE_CONST:int = 30
 const KABUM_DRUATION: float = 0.6
+const VIBRATION_DURATION: int = 200
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var cats_and_balls: AnimatedSprite2D = $cats_and_balls
+@onready var merge_sound: AudioStreamPlayer = $merge_sound
+
 
 var unit_score: int = 0
 var ball_animations : Array[StringName]
@@ -62,6 +65,8 @@ func _on_Ball_collided(ball):
 		current_type="kabum"
 		set_animation()
 		update_animation_properties()
+		merge_sound.play()
+		Input.vibrate_handheld(VIBRATION_DURATION)
 		await get_tree().create_timer(KABUM_DRUATION).timeout
 		#kabum.visible = false
 		remove_from_group(str(current_id))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dsbia1rghqca1"]
+[gd_scene load_steps=31 format=3 uid="uid://dsbia1rghqca1"]
 
 [ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
 [ext_resource type="Texture2D" uid="uid://essl6ki27s5y" path="res://Asset/Image/Tiles/cat1.png" id="2_6g5bb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Cats/cat4.png" id="7_7vy1v"]
 [ext_resource type="Texture2D" uid="uid://bynvbc8vprpr5" path="res://Asset/Image/Cats/cat3.png" id="7_id8x4"]
 [ext_resource type="Texture2D" uid="uid://c3cgcntk8hkqr" path="res://Asset/Image/Tiles/boomba.png" id="9_ykcvt"]
+[ext_resource type="AudioStream" uid="uid://cglucvb78plya" path="res://Asset/Sounds/Effects/addons/kenney impact sounds/impact_soft_heavy_004.ogg" id="10_peo6t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agrun"]
 friction = 0.5
@@ -213,3 +214,6 @@ shape = SubResource("CircleShape2D_6i0wy")
 [node name="cats_and_balls" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3aua4")
 animation = &"kabum"
+
+[node name="merge_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_peo6t")
