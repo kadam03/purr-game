@@ -56,11 +56,11 @@ func _ready():
 	connect("body_entered", _on_Ball_collided)
 
 
-
 func _on_Ball_collided(ball):
 	if  ball is RigidBody2D and ball.current_type == "ball" and self.current_type == "cat" and ball.is_in_group(str(current_id)) and current_id <= MAX_INIT_INDEX:
 		var new_position = (self.position + ball.position) / 2
 		Global.score+=ball.unit_score+self.unit_score
+		Global.set_new_highscore()
 		ball.queue_free()
 		current_type="kabum"
 		set_animation()
@@ -68,7 +68,6 @@ func _on_Ball_collided(ball):
 		merge_sound.play()
 		Input.vibrate_handheld(VIBRATION_DURATION)
 		await get_tree().create_timer(KABUM_DRUATION).timeout
-		#kabum.visible = false
 		remove_from_group(str(current_id))
 		current_id+=1
 		self.position = new_position

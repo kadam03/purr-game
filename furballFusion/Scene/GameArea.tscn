@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://blspr8v2do5fm"]
+[gd_scene load_steps=6 format=3 uid="uid://blspr8v2do5fm"]
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
 [ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/CatOrBall.tscn" id="2_8vdcb"]
-[ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/menu.tscn" id="3_i67xc"]
 [ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="4_3104f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nh3dt"]
@@ -13,7 +12,6 @@ distance = 68.0
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
 cat_or_ball_scene = ExtResource("2_8vdcb")
-menu_scene = ExtResource("3_i67xc")
 
 [node name="Bucket" parent="." instance=ExtResource("1_yhuax")]
 position = Vector2(364, 659)
@@ -25,26 +23,6 @@ position = Vector2(93, 162)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
 position = Vector2(632, 162)
-
-[node name="Score" type="RichTextLabel" parent="."]
-z_index = 5
-offset_left = 46.0
-offset_right = 407.0
-offset_bottom = 63.0
-theme_override_font_sizes/normal_font_size = 45
-text = "Score: "
-fit_content = true
-tab_size = 9
-
-[node name="Highscore" type="RichTextLabel" parent="."]
-z_index = 5
-offset_left = 334.0
-offset_right = 689.0
-offset_bottom = 75.0
-theme_override_font_sizes/normal_font_size = 45
-text = "Highscore: 0"
-fit_content = true
-tab_size = 9
 
 [node name="killzone" parent="." instance=ExtResource("4_3104f")]
 

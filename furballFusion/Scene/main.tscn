@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7y8l8mht4ifo"]
+
+[ext_resource type="Script" path="res://Script/main.gd" id="1_8do4f"]
+[ext_resource type="PackedScene" uid="uid://blspr8v2do5fm" path="res://Scene/GameArea.tscn" id="2_o8omd"]
+[ext_resource type="AudioStream" uid="uid://c440kqrtlqy8p" path="res://Asset/Sounds/Music/Peter Spacey - Kawaii Kitty Dance.mp3" id="3_hoq5g"]
+[ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/menu.tscn" id="4_6gn4a"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8do4f")
+
+[node name="Game" parent="." instance=ExtResource("2_o8omd")]
+position = Vector2(0, 125)
+scale = Vector2(1, 0.9)
+
+[node name="Score" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = 14.0
+offset_top = 59.0
+offset_right = 375.0
+offset_bottom = 122.0
+theme_override_font_sizes/normal_font_size = 45
+text = "Score: "
+fit_content = true
+tab_size = 9
+metadata/_edit_use_anchors_ = true
+
+[node name="Highscore" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = 14.0
+offset_top = -4.0
+offset_right = 369.0
+offset_bottom = 71.0
+theme_override_font_sizes/normal_font_size = 45
+text = "Highscore: 0"
+fit_content = true
+tab_size = 9
+metadata/_edit_use_anchors_ = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hoq5g")
+bus = &"Music"
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 591.0
+offset_top = 15.0
+offset_right = 599.0
+offset_bottom = 23.0
+text = "MENU
+"
+
+[node name="Menu_scene" parent="." instance=ExtResource("4_6gn4a")]
+visible = false
+
+[connection signal="mouse_entered" from="MenuButton" to="." method="_on_menu_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuButton" to="." method="_on_menu_button_mouse_exited"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
