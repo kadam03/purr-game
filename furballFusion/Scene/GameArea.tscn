@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
 [ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/CatOrBall.tscn" id="2_8vdcb"]
-[ext_resource type="PackedScene" uid="uid://be6v0tv1uvxb4" path="res://Scene/menu.tscn" id="3_i67xc"]
-[ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="4_3104f"]
+[ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/menu.tscn" id="3_i67xc"]
+[ext_resource type="PackedScene" path="res://Scene/killzone.tscn" id="4_3104f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nmles"]
 normal = Vector2(0, 1)

@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://be6v0tv1uvxb4"]
+[gd_scene load_steps=2 format=3 uid="uid://dm8myqlofxq2m"]
 
 [ext_resource type="Script" path="res://Script/menu.gd" id="1_55fia"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(270, 642)
 script = ExtResource("1_55fia")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -269.0
+offset_top = -638.0
+offset_right = 500.0
+offset_bottom = 679.0
+color = Color(0.321569, 0.321569, 0.321569, 0.85098)
 
 [node name="Restart" type="Button" parent="."]
 offset_right = 92.0

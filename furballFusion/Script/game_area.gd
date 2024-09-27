@@ -24,6 +24,8 @@ func _ready():
 	add_child(cooldown_timer)  # Add the timer to the scene
 
 
+
+
 var pos_x
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -40,8 +42,18 @@ func _input(event: InputEvent) -> void:
 	# Block further mouse input if cooldown is active
 	if Global.gameover:
 		var menu=menu_scene.instantiate()
-		add_child(menu)
+		menu.name="menu"
+		if not find_child("menu", true, false):
+			add_child(menu)
+		print(menu.name)
 	else:
+		# Find the child by name
+		var child_node = get_node_or_null("menu")
+		if child_node:
+			# Remove the child from the parent
+			remove_child(child_node)
+			# Free the child from memory
+			child_node.queue_free()		
 		if is_click_on_cooldown:
 			return
 		if event.is_action_pressed("mouse_click") and cat_or_ball == null:
