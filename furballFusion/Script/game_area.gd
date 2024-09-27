@@ -5,6 +5,7 @@ const COOLDOWN =0.1
 @onready var lim_right: Node2D = $SpawnLimiters/LimiterRight
 @onready var lim_left: Node2D = $SpawnLimiters/LimiterLeft
 @onready var score_label: RichTextLabel = $Score
+@onready var highscore: RichTextLabel = $Highscore
 
 @export var cat_or_ball_scene: PackedScene
 @export var menu_scene: PackedScene
@@ -13,9 +14,13 @@ var cat_or_ball= null
 var mouse_pressed: bool = false
 var is_click_on_cooldown = false 
 var cooldown_timer = null
+var pos_x
+
 
 
 func _ready():
+	Global.load_highscore()
+	highscore.text="Highscore: " + str(Global.highscore)
 	# Create and setup the cooldown timer
 	cooldown_timer = Timer.new()
 	cooldown_timer.set_wait_time(COOLDOWN) 
@@ -26,9 +31,9 @@ func _ready():
 
 
 
-var pos_x
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	score_label.text = "Score: " + str(Global.score)
 	if mouse_pressed and cat_or_ball != null:
 		pos_x = get_viewport().get_mouse_position().x
 		if pos_x < lim_left.position.x:
@@ -36,7 +41,6 @@ func _process(_delta: float) -> void:
 		if pos_x > lim_right.position.x:
 			pos_x = lim_right.position.x
 		cat_or_ball.position.x = pos_x	
-		score_label.text = "Your score: " + str(Global.score)
 
 func _input(event: InputEvent) -> void:
 	# Block further mouse input if cooldown is active
@@ -45,7 +49,6 @@ func _input(event: InputEvent) -> void:
 		menu.name="menu"
 		if not find_child("menu", true, false):
 			add_child(menu)
-		print(menu.name)
 	else:
 		# Find the child by name
 		var child_node = get_node_or_null("menu")
@@ -75,3 +78,4 @@ func _input(event: InputEvent) -> void:
 func _on_Cooldown_timeout():
 	# Reset the cooldown state after 200 milliseconds
 	is_click_on_cooldown = false
+	

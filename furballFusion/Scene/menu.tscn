@@ -13,16 +13,34 @@ offset_right = 500.0
 offset_bottom = 679.0
 color = Color(0.321569, 0.321569, 0.321569, 0.85098)
 
+[node name="GameOverLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 401.0
+offset_right = 542.0
+offset_bottom = 479.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Game Over"
+
+[node name="YourScore" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 489.0
+offset_right = 526.0
+offset_bottom = 611.0
+theme_override_font_sizes/normal_font_size = 25
+text = "Your score: "
+
 [node name="Restart" type="Button" parent="."]
 offset_right = 92.0
 offset_bottom = 44.0
-text = "Restart"
+text = "Try again"
 
 [node name="End" type="Button" parent="."]
 offset_left = 133.0
 offset_right = 225.0
 offset_bottom = 44.0
-text = "End"
+text = "Enough for now"
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="End" to="." method="_on_end_pressed"]
