@@ -34,7 +34,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	score_label.text = "Score: " + str(Global.score)
-	if mouse_pressed and cat_or_ball != null:
+	if not Global.gameover and mouse_pressed and cat_or_ball != null:
 		pos_x = get_viewport().get_mouse_position().x
 		if pos_x < lim_left.position.x:
 			pos_x = lim_left.position.x
@@ -51,12 +51,12 @@ func _input(event: InputEvent) -> void:
 			add_child(menu)
 	else:
 		# Find the child by name
-		var child_node = get_node_or_null("menu")
-		if child_node:
+		var menu_node = get_node_or_null("menu")
+		if menu_node:
 			# Remove the child from the parent
-			remove_child(child_node)
+			remove_child(menu_node)
 			# Free the child from memory
-			child_node.queue_free()		
+			menu_node.queue_free()		
 		if is_click_on_cooldown:
 			return
 		if event.is_action_pressed("mouse_click") and cat_or_ball == null:

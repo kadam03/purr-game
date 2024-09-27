@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/menu.tscn" id="3_i67xc"]
 [ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="4_3104f"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nmles"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nh3dt"]
 normal = Vector2(0, 1)
+distance = 68.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
@@ -20,10 +21,10 @@ position = Vector2(364, 659)
 [node name="SpawnLimiters" type="Node2D" parent="."]
 
 [node name="LimiterLeft" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(90, 161)
+position = Vector2(93, 162)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(629, 161)
+position = Vector2(632, 162)
 
 [node name="Score" type="RichTextLabel" parent="."]
 z_index = 5
@@ -48,6 +49,5 @@ tab_size = 9
 [node name="killzone" parent="." instance=ExtResource("4_3104f")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-visibility_layer = 2
-position = Vector2(364, 9)
-shape = SubResource("WorldBoundaryShape2D_nmles")
+position = Vector2(361, -14)
+shape = SubResource("WorldBoundaryShape2D_nh3dt")

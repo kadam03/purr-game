@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsbia1rghqca1"]
+[gd_scene load_steps=30 format=3 uid="uid://dsbia1rghqca1"]
 
 [ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
+[ext_resource type="Texture2D" uid="uid://essl6ki27s5y" path="res://Asset/Image/Tiles/cat1.png" id="2_6g5bb"]
 [ext_resource type="Texture2D" uid="uid://obxpju2oka6t" path="res://Asset/Image/Balls/Img_Furball.png" id="2_t7skv"]
 [ext_resource type="Texture2D" uid="uid://m2fsbqvl3gu3" path="res://Asset/Image/Balls/Img_Lineball.png" id="3_e3vff"]
 [ext_resource type="Texture2D" uid="uid://h6w2th0fybhs" path="res://Asset/Image/Balls/Img_Paw.png" id="4_163ys"]
 [ext_resource type="Texture2D" uid="uid://c5k4784hh1v8n" path="res://Asset/Image/Cats/ca1.png" id="5_bhaml"]
-[ext_resource type="Texture2D" uid="uid://d1qwbm1pq46co" path="res://Asset/Image/Cats/cat2.png" id="6_t2fho"]
 [ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Cats/cat4.png" id="7_7vy1v"]
 [ext_resource type="Texture2D" uid="uid://bynvbc8vprpr5" path="res://Asset/Image/Cats/cat3.png" id="7_id8x4"]
+[ext_resource type="Texture2D" uid="uid://c3cgcntk8hkqr" path="res://Asset/Image/Tiles/boomba.png" id="9_ykcvt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_agrun"]
 friction = 0.5
@@ -15,16 +16,200 @@ friction = 0.5
 [sub_resource type="CircleShape2D" id="CircleShape2D_6i0wy"]
 radius = 42.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajfpm"]
+atlas = ExtResource("7_7vy1v")
+region = Rect2(0, 0, 118, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiovc"]
+atlas = ExtResource("2_6g5bb")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdxim"]
+atlas = ExtResource("2_6g5bb")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acrb4"]
+atlas = ExtResource("2_6g5bb")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbytw"]
+atlas = ExtResource("2_6g5bb")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wctqt"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tinro"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hamih"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcgxb"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh084"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a1rh"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nplv"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sps65"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifx25"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r5ue"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n6jn"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsji1"]
+atlas = ExtResource("9_ykcvt")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3aua4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t7skv")
+}],
+"loop": true,
+"name": &"ball_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_e3vff")
+}],
+"loop": true,
+"name": &"ball_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_163ys")
+}],
+"loop": true,
+"name": &"ball_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bhaml")
+}],
+"loop": true,
+"name": &"cat_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajfpm")
+}],
+"loop": true,
+"name": &"cat_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_id8x4")
+}],
+"loop": true,
+"name": &"cat_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiovc")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_pdxim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acrb4")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_pdxim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbytw")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_pdxim")
+}],
+"loop": true,
+"name": &"cat_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wctqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tinro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hamih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcgxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh084")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a1rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nplv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sps65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifx25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r5ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n6jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsji1")
+}],
+"loop": true,
+"name": &"kabum",
+"speed": 10.0
+}]
+
 [node name="CatOrBall" type="RigidBody2D"]
+visibility_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_agrun")
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_uq4wu")
-ball_textures = Array[Texture2D]([ExtResource("2_t7skv"), ExtResource("3_e3vff"), ExtResource("4_163ys"), ExtResource("4_163ys")])
-cat_textures = Array[Texture2D]([ExtResource("5_bhaml"), ExtResource("6_t2fho"), ExtResource("7_id8x4"), ExtResource("7_7vy1v")])
-
-[node name="Sprite" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 3
 shape = SubResource("CircleShape2D_6i0wy")
+
+[node name="cats_and_balls" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3aua4")
+animation = &"kabum"
