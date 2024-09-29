@@ -25,3 +25,9 @@ shape = SubResource("WorldBoundaryShape2D_8alnw")
 position = Vector2(306, 0)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_8alnw")
+
+[node name="ImgBucketFrame2" type="Sprite2D" parent="."]
+position = Vector2(-14, -59)
+rotation = 3.14159
+scale = Vector2(0.668, 0.668)
+texture = ExtResource("1_lgtty")

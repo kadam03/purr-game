@@ -19,13 +19,13 @@ position = Vector2(364, 659)
 [node name="SpawnLimiters" type="Node2D" parent="."]
 
 [node name="LimiterLeft" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(93, 162)
+position = Vector2(89, 187)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(632, 162)
+position = Vector2(628, 187)
 
 [node name="killzone" parent="." instance=ExtResource("4_3104f")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(361, -14)
+position = Vector2(360, -47)
 shape = SubResource("WorldBoundaryShape2D_nh3dt")
