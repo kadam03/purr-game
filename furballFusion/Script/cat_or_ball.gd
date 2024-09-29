@@ -3,19 +3,19 @@ extends RigidBody2D
 const MAX_INIT_INDEX: int  = 2
 const SCORE_MULTIPLIER:int  = 10
 const IMAGE_SCALE_CONST:int = 30
-const KABUM_DRUATION: float = 0.6
+const KABUM_DRUATION: float = 0.4
 const VIBRATION_DURATION: int = 200
 
 @onready var cats_and_balls: AnimatedSprite2D = $cats_and_balls
 @onready var merge_sound: AudioStreamPlayer = $merge_sound
 
 
-var collision_shape: CollisionShape2D
+var collision_polygon: CollisionPolygon2D
 var unit_score: int = 0
-var ball_animations : Array[StringName]
-var cat_animations : Array[StringName]
+var ball_animations: Array[StringName] = []
+var cat_animations: Array[StringName] = []
 var number_of_textures:int
-var current_id:int = 1
+var current_id:int = 0
 var current_type: String 
 var current_animation_name: StringName
 var previous_animation_name: StringName
@@ -28,39 +28,37 @@ func init_variables():
 			ball_animations.append(animation_name)
 	current_id=(randi_range(0,MAX_INIT_INDEX))
 	current_type=["cat","ball","ball"][randi_range(0,2)]
-
-
-func create_shape()->ConvexPolygonShape2D:
+	
+	
+func create_collision_polygon()->CollisionPolygon2D:
 	var image = get_animationTexture().get_image()
 	var bitmap = BitMap.new()
 	bitmap.create_from_image_alpha(image)
 	var scale_factor=get_animation_scale()
 	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, image.get_size()), 5)
-	var convex_shape = ConvexPolygonShape2D.new()
+	var merged_polygon = CollisionPolygon2D.new()
+	var merged_points = []
 	if polys.size() > 0:
-		var all_points = []
 		for poly in polys:
 			var scaled_points = PackedVector2Array()
 			for point in poly:
 				scaled_points.append(point * scale_factor)
-			all_points.append_array(scaled_points)  # Add all points from each polygon
-		var convex_points = Geometry2D.convex_hull(all_points)
-		convex_shape.set_points(convex_points)
-	return convex_shape
+			merged_points.append_array(scaled_points)
+	merged_polygon.polygon = merged_points
+	return merged_polygon
 
-
-func add_collisionshape():
-	collision_shape = CollisionShape2D.new()
-	collision_shape.shape = create_shape()
-	add_child(collision_shape)
+	
+func add_or_replace_collision_polygon():
+	for child in get_children():
+		if child is CollisionPolygon2D:
+			child.queue_free()
+	collision_polygon=create_collision_polygon()
+	add_child(collision_polygon)
 
 
 	
 func get_animationTexture()->Texture2D:
-	var image_id = 0
-	if current_type == "kabum":
-		image_id=6
-	return cats_and_balls.sprite_frames.get_frame_texture(current_animation_name,image_id)
+	return cats_and_balls.sprite_frames.get_frame_texture(current_animation_name,0)
 		
 
 func get_animation_scale() ->Vector2:
@@ -73,23 +71,34 @@ func set_animation():
 		current_animation_name=cat_animations[current_id]
 	elif current_type=="ball":
 		current_animation_name=ball_animations[current_id]
-	elif current_type=="kabum":
-		current_animation_name="kabum"
 	cats_and_balls.play(current_animation_name)
+
 
 
 func update_animation_properties():
 	unit_score += (current_id + 1) * SCORE_MULTIPLIER
 	cats_and_balls.scale=get_animation_scale()
 	var offset=get_animationTexture().get_size()*cats_and_balls.scale
-	collision_shape.set_deferred("shape", create_shape())
-	collision_shape.position = cats_and_balls.position - offset/2
+	add_or_replace_collision_polygon()
+	collision_polygon.position = cats_and_balls.position - offset/2
+	self.mass =float(current_id + 1)
 	add_to_group(str(current_id))
+	
+func play_kabumm():
+	add_to_group("kabum")
+	var kabumm_scale = (current_id+2)*IMAGE_SCALE_CONST/512.0
+	cats_and_balls.scale=Vector2(kabumm_scale,kabumm_scale)
+	cats_and_balls.play("kabum")
+	merge_sound.play()
+	Input.vibrate_handheld(VIBRATION_DURATION)
+	await get_tree().create_timer(KABUM_DRUATION).timeout
+	remove_from_group("kabum")
+	
 
 func _ready():
 	init_variables()
 	set_animation()
-	add_collisionshape()
+	add_or_replace_collision_polygon()
 	update_animation_properties()
 	connect("body_entered", _on_Ball_collided)
 
@@ -100,15 +109,10 @@ func _on_Ball_collided(ball):
 		Global.score+=ball.unit_score+self.unit_score
 		Global.set_new_highscore()
 		ball.queue_free()
-		current_type="kabum"
-		set_animation()
-		update_animation_properties()
-		merge_sound.play()
-		Input.vibrate_handheld(VIBRATION_DURATION)
-		await get_tree().create_timer(KABUM_DRUATION).timeout
+		self.position = new_position
 		remove_from_group(str(current_id))
 		current_id+=1
-		self.position = new_position
 		current_type="cat"
+		await  play_kabumm()
 		set_animation()
 		update_animation_properties()

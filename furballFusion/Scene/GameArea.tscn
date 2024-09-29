@@ -19,10 +19,10 @@ position = Vector2(364, 659)
 [node name="SpawnLimiters" type="Node2D" parent="."]
 
 [node name="LimiterLeft" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(89, 187)
+position = Vector2(85, 157)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(628, 187)
+position = Vector2(624, 157)
 
 [node name="killzone" parent="." instance=ExtResource("4_3104f")]
 

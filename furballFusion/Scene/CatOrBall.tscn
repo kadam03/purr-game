@@ -228,12 +228,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"kabum",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [node name="CatOrBall" type="RigidBody2D"]
 visibility_layer = 3
-mass = 0.35
 physics_material_override = SubResource("PhysicsMaterial_agrun")
 center_of_mass_mode = 1
 contact_monitor = true
@@ -243,6 +242,7 @@ script = ExtResource("1_uq4wu")
 [node name="cats_and_balls" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3aua4")
 animation = &"kabum"
+frame_progress = 0.186617
 
 [node name="merge_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_peo6t")

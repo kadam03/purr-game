@@ -1,6 +1,6 @@
 extends Node2D
 
-const COOLDOWN =0.1
+const COOLDOWN =0.15
 
 @onready var lim_right: Node2D = $SpawnLimiters/LimiterRight
 @onready var lim_left: Node2D = $SpawnLimiters/LimiterLeft
