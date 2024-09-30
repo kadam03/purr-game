@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_8do4f"]
 [ext_resource type="PackedScene" uid="uid://blspr8v2do5fm" path="res://Scene/GameArea.tscn" id="2_o8omd"]
-[ext_resource type="AudioStream" uid="uid://c440kqrtlqy8p" path="res://Asset/Sounds/Music/Peter Spacey - Kawaii Kitty Dance.mp3" id="3_hoq5g"]
+[ext_resource type="AudioStream" uid="uid://c13lbuskpgryo" path="res://Asset/Sounds/Music/catst.wav" id="3_7hkvx"]
 [ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/menu.tscn" id="4_6gn4a"]
 
 [node name="Main" type="Node2D"]
@@ -37,8 +37,9 @@ tab_size = 9
 metadata/_edit_use_anchors_ = true
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_hoq5g")
+stream = ExtResource("3_7hkvx")
 bus = &"Music"
+playback_type = 1
 
 [node name="MenuButton" type="Button" parent="."]
 offset_left = 591.0
