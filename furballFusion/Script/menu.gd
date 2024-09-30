@@ -8,6 +8,12 @@ extends Node2D
 @onready var volumelabel: Label = $Settings/Label
 @onready var volume_sfx: HSlider = $Settings/VolumeSFX
 @onready var label_sfx: Label = $Settings/LabelSFX
+@onready var end: Button = $Settings/End
+
+
+func _ready() -> void:
+	if OS.get_name() == "iOS":
+		end.visible=false
 
 func _process(_delta: float) -> void:
 	if Global.gameover:
