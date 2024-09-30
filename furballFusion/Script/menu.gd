@@ -9,11 +9,14 @@ extends Node2D
 @onready var volume_sfx: HSlider = $Settings/VolumeSFX
 @onready var label_sfx: Label = $Settings/LabelSFX
 @onready var end: Button = $Settings/End
+@onready var end2: Button = $GameOver/End
 
 
 func _ready() -> void:
 	if OS.get_name() == "iOS":
 		end.visible=false
+		end2.visible=false
+		
 
 func _process(_delta: float) -> void:
 	if Global.gameover:
