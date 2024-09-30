@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://dsbia1rghqca1"]
+[gd_scene load_steps=47 format=3 uid="uid://dsbia1rghqca1"]
 
 [ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
 [ext_resource type="Texture2D" uid="uid://essl6ki27s5y" path="res://Asset/Image/Tiles/cat1.png" id="2_6g5bb"]
 [ext_resource type="Texture2D" uid="uid://cyulhsk3ecbqi" path="res://Asset/Image/Tiles/cat2.png" id="2_s2060"]
-[ext_resource type="Texture2D" uid="uid://obxpju2oka6t" path="res://Asset/Image/Balls/Img_Furball.png" id="2_t7skv"]
 [ext_resource type="Texture2D" uid="uid://bff7sbp3ekiib" path="res://Asset/Image/Tiles/cat3.png" id="4_6kke5"]
-[ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Cats/cat4.png" id="7_7vy1v"]
+[ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Tiles/cat4.png" id="7_7vy1v"]
 [ext_resource type="Texture2D" uid="uid://c3cgcntk8hkqr" path="res://Asset/Image/Tiles/boomba.png" id="9_ykcvt"]
 [ext_resource type="AudioStream" uid="uid://cglucvb78plya" path="res://Asset/Sounds/Effects/addons/kenney impact sounds/impact_soft_heavy_004.ogg" id="10_peo6t"]
 
@@ -18,6 +17,14 @@ region = Rect2(512, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flfjt"]
 atlas = ExtResource("2_s2060")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl5rb"]
+atlas = ExtResource("7_7vy1v")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc7ok"]
+atlas = ExtResource("7_7vy1v")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx13f"]
@@ -40,6 +47,10 @@ region = Rect2(0, 0, 512, 512)
 atlas = ExtResource("2_s2060")
 region = Rect2(0, 1024, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_68aut"]
+atlas = ExtResource("7_7vy1v")
+region = Rect2(0, 1024, 512, 512)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_swm0s"]
 atlas = ExtResource("4_6kke5")
 region = Rect2(0, 1024, 512, 512)
@@ -60,9 +71,17 @@ region = Rect2(0, 0, 512, 512)
 atlas = ExtResource("2_s2060")
 region = Rect2(0, 512, 512, 512)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajfpm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1aqf"]
 atlas = ExtResource("7_7vy1v")
-region = Rect2(0, 0, 118, 104)
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2esv"]
+atlas = ExtResource("7_7vy1v")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vul38"]
+atlas = ExtResource("7_7vy1v")
+region = Rect2(0, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dc6to"]
 atlas = ExtResource("4_6kke5")
@@ -103,7 +122,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_7vy1v")
+"texture": SubResource("AtlasTexture_bl5rb")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_cc7ok")
 }],
 "loop": true,
 "name": &"angry_1",
@@ -141,7 +163,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_t7skv")
+"texture": SubResource("AtlasTexture_68aut")
 }],
 "loop": true,
 "name": &"ball_1",
@@ -182,16 +204,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajfpm")
+"texture": SubResource("AtlasTexture_x1aqf")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_p2esv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajfpm")
+"texture": SubResource("AtlasTexture_vul38")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ajfpm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ajfpm")
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_p2esv")
 }],
 "loop": true,
 "name": &"cat_1",
@@ -334,7 +356,7 @@ script = ExtResource("1_uq4wu")
 
 [node name="cats_and_balls" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3aua4")
-animation = &"cat_2"
+animation = &"cat_1"
 
 [node name="merge_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_peo6t")

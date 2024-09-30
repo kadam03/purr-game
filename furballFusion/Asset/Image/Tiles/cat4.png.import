@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccie5kqbtlnks"
-path="res://.godot/imported/cat4.png-7fb80dbb2cf12795d81c140f3daf22e3.ctex"
+path="res://.godot/imported/cat4.png-b83acbc27fe6a2b454d0ea07f3200d40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/cat4.png"
-dest_files=["res://.godot/imported/cat4.png-7fb80dbb2cf12795d81c140f3daf22e3.ctex"]
+source_file="res://Asset/Image/Tiles/cat4.png"
+dest_files=["res://.godot/imported/cat4.png-b83acbc27fe6a2b454d0ea07f3200d40.ctex"]
 
 [params]
 
