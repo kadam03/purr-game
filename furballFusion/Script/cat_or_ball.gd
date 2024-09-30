@@ -11,8 +11,6 @@ const VIBRATION_DURATION: int = 200
 @onready var kabum: AnimatedSprite2D = $kabum
 
 
-
-#var collision_polygon: CollisionPolygon2D
 var unit_score: int = 0
 var ball_animations: Array[StringName] = []
 var cat_animations: Array[StringName] = []
@@ -50,6 +48,8 @@ func create_collision_polygon()->CollisionPolygon2D:
 				scaled_points.append(point * scale_factor)
 			merged_points.append_array(scaled_points)
 	merged_polygon.polygon = merged_points
+	var offset=get_animationTexture().get_size()*get_animation_scale()
+	merged_polygon.position = cats_and_balls.position - offset/2
 	return merged_polygon
 
 	
@@ -57,12 +57,8 @@ func add_or_replace_collision_polygon():
 	for child in get_children():
 		if child is CollisionPolygon2D:
 			child.queue_free()
-	var offset=get_animationTexture().get_size()*cats_and_balls.scale
-	var collision_polygon2=create_collision_polygon()
-	#call_deferred("add_child",collision_polygon2)
-	#collision_polygon2.call_deferred("position",cats_and_balls.position - offset/2)
-	collision_polygon2.position = cats_and_balls.position - offset/2
-	add_child(collision_polygon2)
+	var offset=get_animationTexture().get_size()*get_animation_scale()
+	call_deferred("add_child",create_collision_polygon())
 
 
 	
@@ -110,6 +106,7 @@ func _ready():
 	add_or_replace_collision_polygon()
 	update_animation_properties()
 	connect("body_entered", _on_Ball_collided)
+	connect("body_exited", _on_collision_end)
 
 
 func _on_Ball_collided(ball):
@@ -127,3 +124,8 @@ func _on_Ball_collided(ball):
 			update_animation_properties()
 		elif ball.current_type == "cat" and self.current_type == "cat":
 			cats_and_balls.play(angry_animations[current_id])
+
+func _on_collision_end(ball):
+	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
+		if ball.current_type == "cat" and self.current_type == "cat":
+			set_animation()
