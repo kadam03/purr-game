@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Script/menu.gd" id="1_55fia"]
 
 [node name="Node2D" type="Node2D"]
+z_index = 2
 position = Vector2(270, 642)
 script = ExtResource("1_55fia")
 
