@@ -57,6 +57,7 @@ func _input(event: InputEvent) -> void:
 			# Start the cooldown timer after kiscica is added
 		
 		if event.is_action_released("mouse_click") and cat_or_ball != null:
+			cat_or_ball.laser_visibility=false
 			mouse_pressed = false
 			cat_or_ball.freeze = false
 			cat_or_ball = null

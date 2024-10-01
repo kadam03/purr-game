@@ -1,10 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://dsbia1rghqca1"]
+[gd_scene load_steps=48 format=3 uid="uid://dsbia1rghqca1"]
 
 [ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
 [ext_resource type="Texture2D" uid="uid://essl6ki27s5y" path="res://Asset/Image/Tiles/cat1.png" id="2_6g5bb"]
 [ext_resource type="Texture2D" uid="uid://cyulhsk3ecbqi" path="res://Asset/Image/Tiles/cat2.png" id="2_s2060"]
 [ext_resource type="Texture2D" uid="uid://bff7sbp3ekiib" path="res://Asset/Image/Tiles/cat3.png" id="4_6kke5"]
 [ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Tiles/cat4.png" id="7_7vy1v"]
+[ext_resource type="PackedScene" uid="uid://dcipayv0e8xuj" path="res://Scene/laser.tscn" id="8_huoq3"]
 [ext_resource type="Texture2D" uid="uid://c3cgcntk8hkqr" path="res://Asset/Image/Tiles/boomba.png" id="9_ykcvt"]
 [ext_resource type="AudioStream" uid="uid://cglucvb78plya" path="res://Asset/Sounds/Effects/addons/kenney impact sounds/impact_soft_heavy_004.ogg" id="10_peo6t"]
 
@@ -355,6 +356,7 @@ max_contacts_reported = 10
 script = ExtResource("1_uq4wu")
 
 [node name="cats_and_balls" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_3aua4")
 animation = &"cat_1"
 
@@ -369,6 +371,10 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_c4t7g")
 animation = &"kabum"
 frame_progress = 0.0275997
+
+[node name="Laser" parent="." instance=ExtResource("8_huoq3")]
+position = Vector2(0, 0)
+offset = Vector2(171, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_Ball_collided"]
 [connection signal="body_exited" from="." to="." method="_on_collision_end"]

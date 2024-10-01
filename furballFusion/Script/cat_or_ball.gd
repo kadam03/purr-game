@@ -4,7 +4,11 @@ const MAX_INIT_INDEX: int  = 2
 const SCORE_MULTIPLIER:int  = 10
 const IMAGE_SCALE_CONST:int = 30
 const KABUM_DRUATION: float = 0.6
+const KABUM_OPPACITY: float = 0.2
 const VIBRATION_DURATION: int = 200
+const LASER_WIDTH_SCALE: float = 0.1
+const LASER_OPPACITY: float = 0.4
+@onready var laser: Sprite2D = $Laser
 
 @onready var cats_and_balls: AnimatedSprite2D = $cats_and_balls
 @onready var merge_sound: AudioStreamPlayer = $merge_sound
@@ -14,8 +18,12 @@ const VIBRATION_DURATION: int = 200
 var unit_score: int = 0
 var current_id:int = 0
 var current_type: String 
+var laser_visibility:bool=true
 
 func init_variables():
+	laser.self_modulate.a=LASER_OPPACITY
+	laser.scale=Vector2(1060/laser.texture.get_size().x,LASER_WIDTH_SCALE)
+
 	if Global.animated_sprites_sized_and_collision==null:
 		Global.animated_sprites_sized_and_collision = {"cat"=[],"ball"=[],"angry"=[]}
 		for animation_name:StringName in cats_and_balls.sprite_frames.get_animation_names():
@@ -73,7 +81,7 @@ func update_animation_properties():
 	add_to_group(str(current_id))
 	
 func play_kabumm():
-	cats_and_balls.self_modulate.a=0.2
+	cats_and_balls.self_modulate.a=KABUM_OPPACITY
 	var kabumm_scale = (current_id+2)*IMAGE_SCALE_CONST/512.0
 	kabum.visible=true
 	kabum.scale=Vector2(kabumm_scale,kabumm_scale)
@@ -84,6 +92,9 @@ func play_kabumm():
 	kabum.visible=false
 	cats_and_balls.self_modulate.a=1
 	
+func _process(delta: float) -> void:
+	laser.visible=laser_visibility	
+
 func _ready():
 	init_variables()
 	set_animation()
