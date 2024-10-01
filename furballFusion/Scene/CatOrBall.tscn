@@ -369,3 +369,6 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_c4t7g")
 animation = &"kabum"
 frame_progress = 0.0275997
+
+[connection signal="body_entered" from="." to="." method="_on_Ball_collided"]
+[connection signal="body_exited" from="." to="." method="_on_collision_end"]

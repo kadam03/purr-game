@@ -88,8 +88,6 @@ func _ready():
 	init_variables()
 	set_animation()
 	update_animation_properties()
-	connect("body_entered", _on_Ball_collided)
-	connect("body_exited", _on_collision_end)
 
 func _on_Ball_collided(ball):
 	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
