@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daarcwu37djhu"
-path="res://.godot/imported/Img_Truffle.png-290f129bbce4c9131c6e7066349802aa.ctex"
+uid="uid://bs5tr37ncn4gt"
+path="res://.godot/imported/Laser-Beam-PNG-HD-Image1.png-1db27660ac1eba92f4ec748afe6bd0c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_Truffle.png"
-dest_files=["res://.godot/imported/Img_Truffle.png-290f129bbce4c9131c6e7066349802aa.ctex"]
+source_file="res://Asset/Image/Laser-Beam-PNG-HD-Image1.png"
+dest_files=["res://.godot/imported/Laser-Beam-PNG-HD-Image1.png-1db27660ac1eba92f4ec748afe6bd0c7.ctex"]
 
 [params]
 

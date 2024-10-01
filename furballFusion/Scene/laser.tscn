@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcipayv0e8xuj"]
+
+[ext_resource type="Texture2D" uid="uid://bs5tr37ncn4gt" path="res://Asset/Image/Laser-Beam-PNG-HD-Image1.png" id="1_28pim"]
+
+[node name="Laser" type="Sprite2D"]
+position = Vector2(143, 0)
+rotation = 1.5708
+texture = ExtResource("1_28pim")

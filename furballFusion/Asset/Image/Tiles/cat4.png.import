@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h6w2th0fybhs"
-path="res://.godot/imported/Img_Paw.png-f5f867f59a5eb9571cc2ee197ff050c3.ctex"
+uid="uid://ccie5kqbtlnks"
+path="res://.godot/imported/cat4.png-b83acbc27fe6a2b454d0ea07f3200d40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_Paw.png"
-dest_files=["res://.godot/imported/Img_Paw.png-f5f867f59a5eb9571cc2ee197ff050c3.ctex"]
+source_file="res://Asset/Image/Tiles/cat4.png"
+dest_files=["res://.godot/imported/cat4.png-b83acbc27fe6a2b454d0ea07f3200d40.ctex"]
 
 [params]
 

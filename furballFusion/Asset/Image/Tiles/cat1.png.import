@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m2fsbqvl3gu3"
-path="res://.godot/imported/Img_Lineball.png-9cab67ce0295394d672c8dddb2135473.ctex"
+uid="uid://essl6ki27s5y"
+path="res://.godot/imported/cat1.png-421f407656d635a3358a8d88ba03f60d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_Lineball.png"
-dest_files=["res://.godot/imported/Img_Lineball.png-9cab67ce0295394d672c8dddb2135473.ctex"]
+source_file="res://Asset/Image/Tiles/cat1.png"
+dest_files=["res://.godot/imported/cat1.png-421f407656d635a3358a8d88ba03f60d.ctex"]
 
 [params]
 

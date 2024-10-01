@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://obxpju2oka6t"
-path="res://.godot/imported/Img_Furball.png-1bf1427ad5d963fb0d7919833fcc8bd5.ctex"
+uid="uid://c3cgcntk8hkqr"
+path="res://.godot/imported/boomba.png-73635498e2363c4952423f6bb7209246.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Image/Cats/Img_Furball.png"
-dest_files=["res://.godot/imported/Img_Furball.png-1bf1427ad5d963fb0d7919833fcc8bd5.ctex"]
+source_file="res://Asset/Image/Tiles/boomba.png"
+dest_files=["res://.godot/imported/boomba.png-73635498e2363c4952423f6bb7209246.ctex"]
 
 [params]
 
