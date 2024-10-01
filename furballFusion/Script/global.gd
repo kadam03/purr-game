@@ -8,6 +8,8 @@ var volume: float = linear_to_db(0.01)
 var sfxvolume: float = linear_to_db(0.3)
 var open_menu=false
 var block_input=false
+var animated_sprites_sized_and_collision = null
+
 
 func set_volume(linear_volume):
 	volume = linear_to_db(linear_volume)
