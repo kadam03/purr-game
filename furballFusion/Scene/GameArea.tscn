@@ -22,10 +22,14 @@ position = Vector2(364, 659)
 position = Vector2(85, 157)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(624, 157)
+position = Vector2(609, 16)
 
 [node name="killzone" parent="." instance=ExtResource("4_3104f")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 position = Vector2(360, -47)
 shape = SubResource("WorldBoundaryShape2D_nh3dt")
+
+[node name="TextureButton" type="TextureButton" parent="killzone/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 40.0

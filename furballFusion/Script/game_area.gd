@@ -1,6 +1,6 @@
 extends Node2D
 
-const COOLDOWN =0.15
+const COOLDOWN =0.25
 
 @onready var lim_right: Node2D = $SpawnLimiters/LimiterRight
 @onready var lim_left: Node2D = $SpawnLimiters/LimiterLeft
@@ -14,7 +14,6 @@ var mouse_pressed: bool = false
 var is_click_on_cooldown = false 
 var cooldown_timer = null
 var pos_x
-var pos_y
 
 
 
@@ -32,7 +31,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#pos_y = get_viewport().get_mouse_position().y
 	if not Global.gameover and mouse_pressed and cat_or_ball != null:
 		pos_x = get_viewport().get_mouse_position().x
 		if pos_x < lim_left.position.x:
@@ -47,7 +45,7 @@ func _input(event: InputEvent) -> void:
 		return
 	else:
 		# Find the child by name
-		if event.is_action_pressed("mouse_click") and cat_or_ball == null:
+		if event.is_action_pressed("mouse_click") and cat_or_ball == null and get_viewport().get_mouse_position().y> lim_right.position.y+120 :
 			mouse_pressed = true
 			cat_or_ball = cat_or_ball_scene.instantiate()
 			cat_or_ball.position.y = lim_left.position.y

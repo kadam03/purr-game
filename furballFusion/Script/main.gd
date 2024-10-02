@@ -7,7 +7,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.load_variables()
+	#Global.load_variables()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), Global.volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), Global.sfxvolume)
 	

@@ -9,7 +9,7 @@
 script = ExtResource("1_8do4f")
 
 [node name="Game" parent="." instance=ExtResource("2_o8omd")]
-position = Vector2(0, 125)
+position = Vector2(-11, 120)
 scale = Vector2(1, 0.9)
 
 [node name="Score" type="RichTextLabel" parent="."]
