@@ -8,11 +8,11 @@ var all_animation={}
 var CreateAnimations
 func _ready():
 	CreateAnimations=preload("res://Script/create_animation.gd").new()
-	for animal in Global.get_folder_names_in_directory(Global.TILES_FOLDER):
-		var animated_sprite = CreateAnimations.create_animation_from_images(Global.TILES_FOLDER+animal)
+	for folder in Global.FOLDERS:
+		var animated_sprite = CreateAnimations.create_animation_from_images(folder)
 		animations.add_child(animated_sprite)
 		all_animation[animated_sprite.name]=animated_sprite
-		create_tile(animated_sprite,StringName(str(Global.selected_sprite_name)) == animated_sprite.name,animal)
+		create_tile(animated_sprite,StringName(str(Global.selected_sprite_name)) == animated_sprite.name,folder)
 	if not Global.selected_sprite_name in all_animation.keys():
 		Global.selected_sprite_name=all_animation.keys()[0]
 	Global.selected_sprite=all_animation[Global.selected_sprite_name]
@@ -68,8 +68,8 @@ func merge_textures_into_grid(textures: Array[Texture2D],bg_color:Color) -> Text
 		var image = texture.get_image()
 
 		# Calculate row and column
-		var row = i / n
-		var column = i % n
+		var row:int  = floor(i / n)
+		var column: int = i % n
 
 		# Calculate position in the final image
 		var x_offset = column * tile_width

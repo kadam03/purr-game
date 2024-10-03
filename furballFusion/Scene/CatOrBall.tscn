@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://dsbia1rghqca1"]
 
 [ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
-[ext_resource type="PackedScene" uid="uid://dcipayv0e8xuj" path="res://Scene/laser.tscn" id="8_huoq3"]
+[ext_resource type="PackedScene" path="res://Scene/laser.tscn" id="8_huoq3"]
 [ext_resource type="Texture2D" uid="uid://c3cgcntk8hkqr" path="res://Asset/Image/Tiles/boomba.png" id="9_ykcvt"]
 [ext_resource type="AudioStream" uid="uid://cglucvb78plya" path="res://Asset/Sounds/Effects/addons/kenney impact sounds/impact_soft_heavy_004.ogg" id="10_peo6t"]
 

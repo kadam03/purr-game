@@ -65,7 +65,7 @@ func play_kabumm():
 	kabum.visible=false
 	cats_and_balls.self_modulate.a=1
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	laser.visible=laser_visibility	
 
 func _ready():

@@ -61,7 +61,6 @@ func load_variables():
 		volume=file.get_var(volume)
 		sfxvolume=file.get_var(sfxvolume)
 		selected_sprite_name=file.get_var(selected_sprite_name)
-
 	else:
 		print("no savefile")
 
@@ -108,25 +107,16 @@ func save_volume():
 func save_volumeSFX():
 	store_variables()
 	
-	
-func get_folder_names_in_directory(folder_path: String) -> Array:
-	var folder_names = []
-	var dir = DirAccess.open(folder_path)
+const FOLDERS=["Cats","Dogs"]
+const PNG_PREFIXES=["cat","dog"]
+const IMAGE_RANGE=5
 
-	# Open the specified directory
-	if dir:
-		dir.list_dir_begin()  # Begin listing the directory
+func get_images() -> Dictionary:
+	var image_pathes = {}
 
-		var file_name = dir.get_next()  # Get the first item
-		while file_name != "":
-			# Check if the item is a directory and not a hidden file
-			if dir.current_is_dir() and !file_name.begins_with("."):
-				folder_names.append(file_name)  # Add folder name to the list
-
-			file_name = dir.get_next()  # Get the next item
-
-		dir.list_dir_end()  # End listing the directory
-	else:
-		print("Failed to open directory: ", folder_path)
-
-	return folder_names
+	for i  in range(FOLDERS.size()):
+		var folder = FOLDERS[i]
+		image_pathes[folder]=[]
+		for j in range(IMAGE_RANGE):
+			image_pathes[folder].append(TILES_FOLDER+folder+"/"+PNG_PREFIXES[i]+str(j)+".png")
+	return image_pathes
