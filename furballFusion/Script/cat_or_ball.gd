@@ -20,14 +20,14 @@ var current_id:int = 0
 var current_type: String 
 var laser_visibility:bool=true
 
+
 func init_variables():
 	laser.self_modulate.a=LASER_OPPACITY
 	laser.scale=Vector2(1060/laser.texture.get_size().x,LASER_WIDTH_SCALE)
-
-	if Global.animated_sprites_sized_and_collision==null:
+	if Global.animated_sprites_sized_and_collision=={}:
 		Global.set_animated_sprites_dict(cats_and_balls)
 	current_id=(randi_range(0,MAX_INIT_INDEX))
-	current_type=["cat","ball","ball"][randi_range(0,2)]
+	current_type=[Global.selected_sprite_name,"toy","toy"][randi_range(0,2)]
 
 
 func create_collision_polygon(id,type)->CollisionPolygon2D:
@@ -79,7 +79,7 @@ func _ready():
 
 func _on_Ball_collided(ball):
 	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
-		if ball.current_type == "ball" and current_id < Global.animated_sprites_sized_and_collision["cat"].size()-1:
+		if ball.current_type == "toy" and current_id < Global.animated_sprites_sized_and_collision[Global.selected_sprite_name].size()-1:
 			var new_position = (self.position + ball.position) / 2
 			Global.score+=ball.unit_score+self.unit_score
 			Global.set_new_highscore()

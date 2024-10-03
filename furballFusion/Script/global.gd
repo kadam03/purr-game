@@ -1,7 +1,7 @@
 extends Node
 
 const IMAGE_SCALE_CONST:int = 30
-
+const TILES_FOLDER="res://Asset/Image/Tiles/"
 
 var score: int =0
 var highscore: int=0
@@ -11,9 +11,11 @@ var volume: float = linear_to_db(0.01)
 var sfxvolume: float = linear_to_db(0.3)
 var open_menu=false
 var block_input=false
-var animated_sprites_sized_and_collision = null
+var animated_sprites_sized_and_collision = {}
 var selected_sprite: AnimatedSprite2D = null
 var selected_sprite_name=0
+var folders = ["Cats","Dogs"]
+
 
 func _ready() -> void:
 	load_variables()
@@ -64,25 +66,27 @@ func load_variables():
 		print("no savefile")
 
 func set_animated_sprites_dict(sprite: AnimatedSprite2D):
-	Global.animated_sprites_sized_and_collision = {"cat"=[],"ball"=[],"angry"=[]}
+	Global.animated_sprites_sized_and_collision[Global.selected_sprite_name]=[]
+	Global.animated_sprites_sized_and_collision["toy"]=[]
+	Global.animated_sprites_sized_and_collision["angry"]=[]
 	for animation_name:StringName in sprite.sprite_frames.get_animation_names():
-		var type_id=animation_name.split("_")
-		Global.animated_sprites_sized_and_collision[type_id[0]].append(create_dict(sprite,animation_name,int(type_id[1])))
+		if "_" in animation_name:
+			var type_id=animation_name.split("_")
+			Global.animated_sprites_sized_and_collision[type_id[0]].append(create_dict(sprite,animation_name,int(type_id[1])))
 
 
 func create_dict(sprite: AnimatedSprite2D,animation_name,catid):
 	var texture = sprite.sprite_frames.get_frame_texture(animation_name,0)
 	var current_scale=get_animation_scale(catid,texture)
-	var polygon_points = create_scaled_polygon_points(animation_name,catid,texture,current_scale)
+	var polygon_points = create_scaled_polygon_points(texture,current_scale)
 	return {"name":animation_name,"scale":current_scale,"polygon_points":polygon_points,"texture":texture}
 	
 	
-func create_scaled_polygon_points(animation_name,id,texture,scale_factor):
+func create_scaled_polygon_points(texture,scale_factor):
 	var image = texture.get_image()
 	var bitmap = BitMap.new()
 	bitmap.create_from_image_alpha(image)
 	var polys = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, image.get_size()), 5)
-	var merged_polygon = CollisionPolygon2D.new()
 	var merged_points = []
 	if polys.size() > 0:
 		for poly in polys:
@@ -104,3 +108,25 @@ func save_volume():
 func save_volumeSFX():
 	store_variables()
 	
+	
+func get_folder_names_in_directory(folder_path: String) -> Array:
+	var folder_names = []
+	var dir = DirAccess.open(folder_path)
+
+	# Open the specified directory
+	if dir:
+		dir.list_dir_begin()  # Begin listing the directory
+
+		var file_name = dir.get_next()  # Get the first item
+		while file_name != "":
+			# Check if the item is a directory and not a hidden file
+			if dir.current_is_dir() and !file_name.begins_with("."):
+				folder_names.append(file_name)  # Add folder name to the list
+
+			file_name = dir.get_next()  # Get the next item
+
+		dir.list_dir_end()  # End listing the directory
+	else:
+		print("Failed to open directory: ", folder_path)
+
+	return folder_names
