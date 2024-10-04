@@ -1,13 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://blspr8v2do5fm"]
+[gd_scene load_steps=4 format=3 uid="uid://blspr8v2do5fm"]
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
 [ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/CatOrBall.tscn" id="2_8vdcb"]
-[ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="4_3104f"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nh3dt"]
-normal = Vector2(0, 1)
-distance = 68.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
@@ -23,13 +18,3 @@ position = Vector2(85, 157)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
 position = Vector2(609, 16)
-
-[node name="killzone" parent="." instance=ExtResource("4_3104f")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(360, -47)
-shape = SubResource("WorldBoundaryShape2D_nh3dt")
-
-[node name="TextureButton" type="TextureButton" parent="killzone/CollisionShape2D"]
-offset_right = 40.0
-offset_bottom = 40.0

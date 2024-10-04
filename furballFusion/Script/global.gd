@@ -1,7 +1,6 @@
 extends Node
 
 const IMAGE_SCALE_CONST:int = 30
-const TILES_FOLDER="res://Asset/Image/Tiles/"
 const TOY_PREFIX="toy"
 const FIGHT_PREFIX="angry"
 
@@ -109,16 +108,16 @@ func save_volume():
 func save_volumeSFX():
 	store_variables()
 	
-const FOLDERS=["Cats","Dogs"]
-const PNG_PREFIXES=["cat","dog"]
-const IMAGE_RANGE=5
 
-func get_images() -> Dictionary:
-	var image_pathes = {}
-
-	for i  in range(FOLDERS.size()):
-		var folder = FOLDERS[i]
-		image_pathes[folder]=[]
-		for j in range(IMAGE_RANGE):
-			image_pathes[folder].append(TILES_FOLDER+folder+"/"+PNG_PREFIXES[i]+str(j)+".png")
-	return image_pathes
+func get_images_from_tiles_scene()->Dictionary:
+	var tiles_scene = preload("res://Scene/Tiles.tscn").instantiate()
+	var image_dict:Dictionary = {}
+	for category in tiles_scene.get_children():
+		if category is Node:
+			var images:Array[Image]
+			for animal in category.get_children():
+				if animal is Sprite2D:
+					images.append(animal.texture.get_image())
+			image_dict[category.name]=images
+	return image_dict
+	

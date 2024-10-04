@@ -8,17 +8,15 @@ var all_animation={}
 var CreateAnimations
 func _ready():
 	CreateAnimations=preload("res://Script/create_animation.gd").new()
-	for folder in Global.FOLDERS:
-		var animated_sprite = CreateAnimations.create_animation_from_images(folder)
+	var images_dict=Global.get_images_from_tiles_scene()
+	for category in images_dict:
+		var animated_sprite = CreateAnimations.create_animation_from_images(category,images_dict[category])
 		animations.add_child(animated_sprite)
 		all_animation[animated_sprite.name]=animated_sprite
-		create_tile(animated_sprite,StringName(str(Global.selected_sprite_name)) == animated_sprite.name,folder)
+		create_tile(animated_sprite,StringName(str(Global.selected_sprite_name)) == animated_sprite.name,category)
 	if not Global.selected_sprite_name in all_animation.keys():
 		Global.selected_sprite_name=all_animation.keys()[0]
 	Global.selected_sprite=all_animation[Global.selected_sprite_name]
-	
-
-
 
 func create_tile(sprite: AnimatedSprite2D,pressed=false,animal_name:String="Cats"):
 	# Create a Sprite node to display the first frame
@@ -63,13 +61,13 @@ func merge_textures_into_grid(textures: Array[Texture2D],bg_color:Color) -> Text
 	result_image.fill(bg_color)  # Fill with transparent background
 
 	# Copy each texture onto the image at the correct grid position
-	for i:int in range(textures.size()):
+	for i in range(textures.size()):
 		var texture = textures[i]
 		var image = texture.get_image()
 
 		# Calculate row and column
-		var row:int  = floor(i / n)
-		var column: int = i % n
+		var row  = float(i) / n
+		var column = i % n
 
 		# Calculate position in the final image
 		var x_offset = column * tile_width

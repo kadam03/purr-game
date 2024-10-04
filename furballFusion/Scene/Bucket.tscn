@@ -1,8 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://djxulxg4xla8n"]
+[gd_scene load_steps=7 format=3 uid="uid://djxulxg4xla8n"]
 
 [ext_resource type="Texture2D" uid="uid://c3rxwfhswjwg8" path="res://Asset/Image/Img_BucketFrame.png" id="1_lgtty"]
+[ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="2_qnqwu"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8alnw"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ri3fh"]
+a = Vector2(-313, 1)
+b = Vector2(311, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qj3mv"]
+a = Vector2(-210, -13.9992)
+b = Vector2(999, -13.0036)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_onw3g"]
+a = Vector2(629, -4.99771)
+b = Vector2(-575, 6.99792)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g4vpo"]
+a = Vector2(306, 69)
+b = Vector2(-309, 69)
 
 [node name="Bucket" type="Node2D"]
 
@@ -13,21 +28,29 @@ texture = ExtResource("1_lgtty")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2DBottom" type="CollisionShape2D" parent="StaticBody2D"]
+visibility_layer = 2
 position = Vector2(0, 579)
-shape = SubResource("WorldBoundaryShape2D_8alnw")
+shape = SubResource("SegmentShape2D_ri3fh")
+debug_color = Color(0.938219, 0.145116, 0.508151, 0.42)
 
 [node name="CollisionShape2DLeft" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-316, 0)
+position = Vector2(-333, -421)
 rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_8alnw")
+shape = SubResource("SegmentShape2D_qj3mv")
 
 [node name="CollisionShape2DRight" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(306, 0)
 rotation = -1.5708
-shape = SubResource("WorldBoundaryShape2D_8alnw")
+shape = SubResource("SegmentShape2D_onw3g")
 
 [node name="ImgBucketFrame2" type="Sprite2D" parent="."]
 position = Vector2(-14, -59)
 rotation = 3.14159
 scale = Vector2(0.668, 0.668)
 texture = ExtResource("1_lgtty")
+
+[node name="killzone" parent="." instance=ExtResource("2_qnqwu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(-9, -710)
+shape = SubResource("SegmentShape2D_g4vpo")

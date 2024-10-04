@@ -10,12 +10,12 @@ func preload_images_from_folder(folder)->Array[Image]:
 		images.append(image)
 	return images
 
-func create_animation_from_images(folder: String,cols:float=2,rows:float=3)->AnimatedSprite2D:
-	var images:Array[Image] = preload_images_from_folder(folder)
+func create_animation_from_images(category: String,images:Array[Image],cols:float=2,rows:float=3)->AnimatedSprite2D:
+	#var images:Array[Image] = preload_images_from_folder(folder)
 	if images:
 		var animated_sprite= AnimatedSprite2D.new()
 		animated_sprite.z_index=1
-		animated_sprite.name=folder
+		animated_sprite.name=category
 		var sprite_frames = SpriteFrames.new()
 		animated_sprite.frames = sprite_frames
 		var anim_index:int = 0
