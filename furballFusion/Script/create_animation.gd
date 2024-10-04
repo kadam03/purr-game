@@ -8,26 +8,13 @@ func preload_images_from_folder(folder)->Array[Image]:
 		var comtexture = ResourceLoader.load(path)
 		var image:Image = comtexture.get_image()
 		images.append(image)
-	#var dir = DirAccess.open(folder_path)
-	#if dir:
-		#dir.list_dir_begin()
-		#var file_name = dir.get_next()
-		#while file_name != "":
-			#if file_name.ends_with(".png"): # Check for PNG files, adjust if necessary
-				#var path = folder_path + "/" + file_name
-				#var comtexture = ResourceLoader.load(path)
-				#var image:Image = comtexture.get_image()
-				#images.append(image)
-			#file_name = dir.get_next()
-		#dir.list_dir_end()
-	#else:
-		#print("Failed to open directory at path: " + folder_path)
 	return images
 
 func create_animation_from_images(folder: String,cols:float=2,rows:float=3)->AnimatedSprite2D:
 	var images:Array[Image] = preload_images_from_folder(folder)
 	if images:
 		var animated_sprite= AnimatedSprite2D.new()
+		animated_sprite.z_index=1
 		animated_sprite.name=folder
 		var sprite_frames = SpriteFrames.new()
 		animated_sprite.frames = sprite_frames
@@ -42,8 +29,8 @@ func create_animation_from_images(folder: String,cols:float=2,rows:float=3)->Ani
 					var texture = ImageTexture.create_from_image(sprite_sheet.get_region(frame_rect))
 					frames.append(texture)
 			var animal_name = animated_sprite.name+"_"+str(anim_index)
-			var toy_name = "toy_"+str(anim_index)
-			var fight_name = "angry_"+str(anim_index)
+			var toy_name = Global.TOY_PREFIX+"_"+str(anim_index)
+			var fight_name = Global.FIGHT_PREFIX+"_"+str(anim_index)
 			sprite_frames.add_animation(animal_name)
 			sprite_frames.add_animation(toy_name)
 			sprite_frames.add_animation(fight_name)

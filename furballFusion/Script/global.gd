@@ -2,6 +2,8 @@ extends Node
 
 const IMAGE_SCALE_CONST:int = 30
 const TILES_FOLDER="res://Asset/Image/Tiles/"
+const TOY_PREFIX="toy"
+const FIGHT_PREFIX="angry"
 
 var score: int =0
 var highscore: int=0
