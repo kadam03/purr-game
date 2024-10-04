@@ -1,17 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://blspr8v2do5fm"]
+[gd_scene load_steps=4 format=3 uid="uid://blspr8v2do5fm"]
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
-[ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/CatOrBall.tscn" id="2_8vdcb"]
-[ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="4_3104f"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nh3dt"]
-normal = Vector2(0, 1)
-distance = 68.0
+[ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/AnimalOrToy.tscn" id="2_8vdcb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
-cat_or_ball_scene = ExtResource("2_8vdcb")
+animal_or_toy_scene = ExtResource("2_8vdcb")
 
 [node name="Bucket" parent="." instance=ExtResource("1_yhuax")]
 position = Vector2(364, 659)
@@ -22,10 +17,4 @@ position = Vector2(364, 659)
 position = Vector2(85, 157)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(624, 157)
-
-[node name="killzone" parent="." instance=ExtResource("4_3104f")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(360, -47)
-shape = SubResource("WorldBoundaryShape2D_nh3dt")
+position = Vector2(609, 16)

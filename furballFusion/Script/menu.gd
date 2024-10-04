@@ -4,18 +4,26 @@ extends Node2D
 @onready var game_over: ColorRect = $GameOver
 @onready var your_score: RichTextLabel = $GameOver/YourScore
 @onready var settings: ColorRect = $Settings
-@onready var volume: HSlider = $Settings/Volume
-@onready var volumelabel: Label = $Settings/Label
-@onready var volume_sfx: HSlider = $Settings/VolumeSFX
-@onready var label_sfx: Label = $Settings/LabelSFX
+@onready var node: Node2D = $Settings/Node
+
 @onready var end: Button = $Settings/End
 @onready var end2: Button = $GameOver/End
+@onready var set_selector: CanvasGroup = $Settings/CanvasGroup
+@onready var tab_bar: TabBar = $Settings/TabBar
+@onready var volumelabel: Label = $Settings/Node/Label
+@onready var volume_sfx: HSlider = $Settings/Node/VolumeSFX
+@onready var label_sfx: Label = $Settings/Node/LabelSFX
+@onready var volume: HSlider = $Settings/Node/Volume
 
 
 func _ready() -> void:
 	if OS.get_name() == "iOS":
 		end.visible=false
 		end2.visible=false
+	volume.value=Global.get_volume()
+	volume_sfx.value=Global.get_volumeSFX()
+	volumelabel.text = "Volume: " + str(volume.value*100) +"%"
+	label_sfx.text = "Volume: " + str(volume_sfx.value*100) +"%"
 		
 
 func _process(_delta: float) -> void:
@@ -30,10 +38,6 @@ func _process(_delta: float) -> void:
 	else:
 		settings.visible=true
 		game_over.visible=false
-		volume.value=Global.get_volume()
-		volume_sfx.value=Global.get_volumeSFX()
-		volumelabel.text = "Volume: " + str(volume.value*100) +"%"
-		label_sfx.text = "Volume: " + str(volume_sfx.value*100) +"%"
 		
 	
 
@@ -62,3 +66,12 @@ func _on_button_pressed() -> void:
 func _on_volume_sfx_value_changed(value: float) -> void:
 	Global.set_volumeSFX(value)
 	label_sfx.text = "Volume: " + str(value*100) +"%"
+
+
+func _on_tab_bar_tab_changed(tab: int) -> void:
+	if tab==0:
+		node.visible=true
+		set_selector.visible=false
+	elif tab==1:
+		node.visible=false
+		set_selector.visible=true
