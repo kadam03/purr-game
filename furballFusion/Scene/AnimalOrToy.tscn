@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://dsbia1rghqca1"]
 
-[ext_resource type="Script" path="res://Script/cat_or_ball.gd" id="1_uq4wu"]
-[ext_resource type="PackedScene" uid="uid://dcipayv0e8xuj" path="res://Scene/laser.tscn" id="8_huoq3"]
+[ext_resource type="Script" path="res://Script/animal_or_toy.gd" id="1_uq4wu"]
+[ext_resource type="Texture2D" uid="uid://bs5tr37ncn4gt" path="res://Asset/Image/Laser-Beam-PNG-HD-Image1.png" id="5_h26ke"]
 [ext_resource type="Texture2D" uid="uid://c3cgcntk8hkqr" path="res://Asset/Image/Tiles/boomba.png" id="9_ykcvt"]
 [ext_resource type="AudioStream" uid="uid://cglucvb78plya" path="res://Asset/Sounds/Effects/addons/kenney impact sounds/impact_soft_heavy_004.ogg" id="10_peo6t"]
 
@@ -100,7 +100,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="CatOrBall" type="RigidBody2D"]
+[node name="AnimalOrToy" type="RigidBody2D"]
 visibility_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_agrun")
 center_of_mass_mode = 1
@@ -120,9 +120,10 @@ sprite_frames = SubResource("SpriteFrames_c4t7g")
 animation = &"kabum"
 frame_progress = 0.0275997
 
-[node name="Laser" parent="." instance=ExtResource("8_huoq3")]
-position = Vector2(0, 0)
-offset = Vector2(171, 0)
+[node name="Laser" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("5_h26ke")
+offset = Vector2(170, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_Ball_collided"]
 [connection signal="body_exited" from="." to="." method="_on_collision_end"]

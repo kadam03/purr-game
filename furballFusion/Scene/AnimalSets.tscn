@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://423ij2iv8x7j"]
 
-[ext_resource type="Script" path="res://Script/collections.gd" id="1_f5svl"]
+[ext_resource type="Script" path="res://Script/animal_sets.gd" id="1_f2arw"]
 
 [node name="CanvasGroup" type="CanvasGroup"]
-script = ExtResource("1_f5svl")
+script = ExtResource("1_f2arw")
 
 [node name="Animations" type="Node" parent="."]
 

@@ -7,9 +7,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#Global.load_variables()
-	if Engine.is_editor_hint():
-		Global.create_image_conf_json()
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), Global.volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), Global.sfxvolume)
 	highscore.text="Highscore: " + str(Global.highscore)

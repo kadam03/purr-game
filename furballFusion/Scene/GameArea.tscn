@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Script/game_area.gd" id="1_ofnof"]
 [ext_resource type="PackedScene" uid="uid://djxulxg4xla8n" path="res://Scene/Bucket.tscn" id="1_yhuax"]
-[ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/CatOrBall.tscn" id="2_8vdcb"]
+[ext_resource type="PackedScene" uid="uid://dsbia1rghqca1" path="res://Scene/AnimalOrToy.tscn" id="2_8vdcb"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ofnof")
-cat_or_ball_scene = ExtResource("2_8vdcb")
+animal_or_toy_scene = ExtResource("2_8vdcb")
 
 [node name="Bucket" parent="." instance=ExtResource("1_yhuax")]
 position = Vector2(364, 659)

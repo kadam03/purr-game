@@ -5,12 +5,10 @@ extends Node2D
 
 
 var all_animation={}
-var CreateAnimations
 func _ready():
-	CreateAnimations=preload("res://Script/create_animation.gd").new()
 	var images_dict=Global.get_images_from_tiles_scene()
 	for category in images_dict:
-		var animated_sprite = CreateAnimations.create_animation_from_images(category,images_dict[category])
+		var animated_sprite = Global.create_animation_from_images(category,images_dict[category])
 		animations.add_child(animated_sprite)
 		all_animation[animated_sprite.name]=animated_sprite
 		create_tile(animated_sprite,StringName(str(Global.selected_sprite_name)) == animated_sprite.name,category)
@@ -40,15 +38,14 @@ func create_tile(sprite: AnimatedSprite2D,pressed=false,animal_name:String="Cats
 	tile_button.custom_minimum_size=Vector2(298.0,298.0)
 	
 	grid_container.add_child(tile_button)
-	
-	
+
 func _set_selected_sprite(toggled_on: bool, button:TextureButton):
 	if toggled_on:
 		Global.selected_sprite=button.get_meta("related_sprite")
 		Global.selected_sprite_name=Global.selected_sprite.name
 		Global.set_animated_sprites_dict(Global.selected_sprite)
 		Global.store_variables()
-		
+
 func merge_textures_into_grid(textures: Array[Texture2D],bg_color:Color) -> Texture2D:
 	# Calculate the grid size
 	var n:int = ceil(sqrt(textures.size()))
@@ -66,7 +63,7 @@ func merge_textures_into_grid(textures: Array[Texture2D],bg_color:Color) -> Text
 		var image = texture.get_image()
 
 		# Calculate row and column
-		var row  = float(i) / n
+		var row  = int(float(i) / n)
 		var column = i % n
 
 		# Calculate position in the final image
@@ -85,7 +82,7 @@ func get_merged_image_from_animations(animated_sprite:AnimatedSprite2D,type,bg_c
 		if anim.begins_with(type):
 			textures.append(animated_sprite.sprite_frames.get_frame_texture(anim, frame))
 	return merge_textures_into_grid(textures,bg_color)
-	
+
 func _set_buttons_unpressed():
 	for button:TextureButton in grid_container.get_children():
 		button.button_pressed=false

@@ -12,11 +12,15 @@ config_version=5
 
 config/name="FurballFusion"
 config/version="v.0.0.1"
-run/main_scene="res://Scene/main.tscn"
+run/main_scene="res://Scene/Main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
-config/macos_native_icon="res://icon.icns"
-config/windows_native_icon="res://icon.ico"
+config/icon="res://Asset/Image/Icons/icon.png"
+config/macos_native_icon="res://Asset/Image/Icons/icon.icns"
+config/windows_native_icon="res://Asset/Image/Icons/icon.ico"
+
+[audio]
+
+buses/default_bus_layout="res://Asset/default_bus_layout.tres"
 
 [autoload]
 

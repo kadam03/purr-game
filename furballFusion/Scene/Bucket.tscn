@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://djxulxg4xla8n"]
 
 [ext_resource type="Texture2D" uid="uid://c3rxwfhswjwg8" path="res://Asset/Image/Img_BucketFrame.png" id="1_lgtty"]
-[ext_resource type="PackedScene" uid="uid://x3t86yonw5bc" path="res://Scene/killzone.tscn" id="2_qnqwu"]
+[ext_resource type="Script" path="res://Script/killzone.gd" id="2_dr8e1"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ri3fh"]
 a = Vector2(-313, 1)
@@ -44,13 +44,17 @@ rotation = -1.5708
 shape = SubResource("SegmentShape2D_onw3g")
 
 [node name="ImgBucketFrame2" type="Sprite2D" parent="."]
-position = Vector2(-14, -59)
+position = Vector2(-7.99994, -59)
 rotation = 3.14159
 scale = Vector2(0.668, 0.668)
 texture = ExtResource("1_lgtty")
 
-[node name="killzone" parent="." instance=ExtResource("2_qnqwu")]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-23, -645)
+script = ExtResource("2_dr8e1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(-9, -710)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, -62)
 shape = SubResource("SegmentShape2D_g4vpo")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
