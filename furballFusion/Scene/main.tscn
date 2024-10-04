@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7y8l8mht4ifo"]
+[gd_scene load_steps=4 format=3 uid="uid://2ybfw4fxd1b4"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_kefm0"]
 [ext_resource type="PackedScene" uid="uid://blspr8v2do5fm" path="res://Scene/GameArea.tscn" id="2_li680"]
-[ext_resource type="AudioStream" uid="uid://c13lbuskpgryo" path="res://Asset/Sounds/Music/catst.wav" id="3_tettw"]
 [ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/Menu.tscn" id="4_fwxfh"]
 
 [node name="Main" type="Node2D"]
@@ -35,11 +34,6 @@ text = "Highscore: 0"
 fit_content = true
 tab_size = 9
 metadata/_edit_use_anchors_ = true
-
-[node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_tettw")
-bus = &"Music"
-playback_type = 1
 
 [node name="MenuButton" type="Button" parent="."]
 offset_left = 473.0

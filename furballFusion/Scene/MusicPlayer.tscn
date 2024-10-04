@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpmatf5eb0eba"]
+
+[ext_resource type="AudioStream" uid="uid://c13lbuskpgryo" path="res://Asset/Sounds/Music/catst.wav" id="1_vl3il"]
+
+[node name="music" type="AudioStreamPlayer"]
+stream = ExtResource("1_vl3il")
+autoplay = true
+bus = &"Music"
+playback_type = 1

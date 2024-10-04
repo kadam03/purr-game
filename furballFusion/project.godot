@@ -25,6 +25,7 @@ buses/default_bus_layout="res://Asset/default_bus_layout.tres"
 [autoload]
 
 Global="*res://Script/global.gd"
+MusicPlayer="*res://Scene/MusicPlayer.tscn"
 
 [display]
 
