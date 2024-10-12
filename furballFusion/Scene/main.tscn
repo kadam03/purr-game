@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7y8l8mht4ifo"]
+[gd_scene load_steps=4 format=3 uid="uid://2ybfw4fxd1b4"]
 
-[ext_resource type="Script" path="res://Script/main.gd" id="1_8do4f"]
-[ext_resource type="PackedScene" uid="uid://blspr8v2do5fm" path="res://Scene/GameArea.tscn" id="2_o8omd"]
-[ext_resource type="AudioStream" uid="uid://c13lbuskpgryo" path="res://Asset/Sounds/Music/catst.wav" id="3_7hkvx"]
-[ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/menu.tscn" id="4_6gn4a"]
+[ext_resource type="Script" path="res://Script/main.gd" id="1_kefm0"]
+[ext_resource type="PackedScene" uid="uid://blspr8v2do5fm" path="res://Scene/GameArea.tscn" id="2_li680"]
+[ext_resource type="PackedScene" uid="uid://dm8myqlofxq2m" path="res://Scene/Menu.tscn" id="4_fwxfh"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_8do4f")
+script = ExtResource("1_kefm0")
 
-[node name="Game" parent="." instance=ExtResource("2_o8omd")]
-position = Vector2(0, 125)
+[node name="Game" parent="." instance=ExtResource("2_li680")]
+position = Vector2(-11, 120)
 scale = Vector2(1, 0.9)
 
 [node name="Score" type="RichTextLabel" parent="."]
@@ -36,20 +35,16 @@ fit_content = true
 tab_size = 9
 metadata/_edit_use_anchors_ = true
 
-[node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_7hkvx")
-bus = &"Music"
-playback_type = 1
-
 [node name="MenuButton" type="Button" parent="."]
-offset_left = 591.0
+offset_left = 473.0
 offset_top = 15.0
-offset_right = 599.0
-offset_bottom = 23.0
+offset_right = 648.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 40
 text = "MENU
 "
 
-[node name="Menu_scene" parent="." instance=ExtResource("4_6gn4a")]
+[node name="Menu_scene" parent="." instance=ExtResource("4_fwxfh")]
 visible = false
 
 [connection signal="mouse_entered" from="MenuButton" to="." method="_on_menu_button_mouse_entered"]
