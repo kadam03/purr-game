@@ -14,7 +14,7 @@ position = Vector2(364, 659)
 [node name="SpawnLimiters" type="Node2D" parent="."]
 
 [node name="LimiterLeft" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(85, 157)
+position = Vector2(97, 263)
 
 [node name="LimiterRight" type="Node2D" parent="SpawnLimiters"]
-position = Vector2(609, 16)
+position = Vector2(630, 71)
