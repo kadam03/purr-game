@@ -1,6 +1,6 @@
 extends Node
 
-const IMAGE_SCALE_CONST:int = 30
+const IMAGE_SCALE_CONST:int = 20
 const TOY_PREFIX="toy"
 const FIGHT_PREFIX="angry"
 const TILES_SCENE="res://Scene/Tiles.tscn"

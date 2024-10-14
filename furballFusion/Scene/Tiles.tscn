@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://1yi8kwb1yeet"]
+[gd_scene load_steps=10 format=3 uid="uid://1yi8kwb1yeet"]
 
 [ext_resource type="Texture2D" uid="uid://essl6ki27s5y" path="res://Asset/Image/Tiles/Cats/cat1.png" id="2_x6uk6"]
 [ext_resource type="Texture2D" uid="uid://cyulhsk3ecbqi" path="res://Asset/Image/Tiles/Cats/cat2.png" id="3_w2y2s"]
 [ext_resource type="Texture2D" uid="uid://bff7sbp3ekiib" path="res://Asset/Image/Tiles/Cats/cat3.png" id="4_sq18n"]
 [ext_resource type="Texture2D" uid="uid://ccie5kqbtlnks" path="res://Asset/Image/Tiles/Cats/cat4.png" id="5_x2aoq"]
-[ext_resource type="Texture2D" uid="uid://71x42qx2e54e" path="res://Asset/Image/Tiles/Cats/cat0.png" id="6_sl4qn"]
+[ext_resource type="Texture2D" uid="uid://71x42qx2e54e" path="res://Asset/Image/Tiles/Cats/cat5.png" id="6_sl4qn"]
+[ext_resource type="Texture2D" uid="uid://ou7s4gpwe0kl" path="res://Asset/Image/Tiles/Cats/cat6.png" id="6_yvo1c"]
+[ext_resource type="Texture2D" uid="uid://q6al707hk5un" path="res://Asset/Image/Tiles/Cats/cat7.png" id="7_enj1u"]
+[ext_resource type="Texture2D" uid="uid://bxybiqoqeq815" path="res://Asset/Image/Tiles/Cats/cat8.png" id="8_aniak"]
+[ext_resource type="Texture2D" uid="uid://cg1bixy8hbwmf" path="res://Asset/Image/Tiles/Cats/cat9.png" id="9_e0wf2"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -34,6 +38,26 @@ texture = ExtResource("5_x2aoq")
 visible = false
 position = Vector2(509, 911)
 texture = ExtResource("6_sl4qn")
+
+[node name="Cat6" type="Sprite2D" parent="Cats"]
+visible = false
+position = Vector2(424, 271)
+texture = ExtResource("6_yvo1c")
+
+[node name="Cat7" type="Sprite2D" parent="Cats"]
+visible = false
+position = Vector2(424, 271)
+texture = ExtResource("7_enj1u")
+
+[node name="Cat8" type="Sprite2D" parent="Cats"]
+visible = false
+position = Vector2(424, 271)
+texture = ExtResource("8_aniak")
+
+[node name="Cat9" type="Sprite2D" parent="Cats"]
+visible = false
+position = Vector2(424, 271)
+texture = ExtResource("9_e0wf2")
 
 [node name="Dogs" type="Node" parent="."]
 

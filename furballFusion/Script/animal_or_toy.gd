@@ -1,8 +1,8 @@
+class_name AnimalOrToy
 extends RigidBody2D
 
-const MAX_INIT_INDEX: int  = 2
+const MAX_INIT_INDEX_DIFF: int  = 3
 const SCORE_MULTIPLIER:int  = 10
-const IMAGE_SCALE_CONST:int = 30
 const KABUM_DRUATION: float = 0.6
 const KABUM_OPPACITY: float = 0.2
 const VIBRATION_DURATION: int = 200
@@ -26,7 +26,7 @@ func init_variables():
 	laser.scale=Vector2(1060/laser.texture.get_size().x,LASER_WIDTH_SCALE)
 	if Global.animated_sprites_sized_and_collision=={}:
 		Global.set_animated_sprites_dict(cats_and_balls)
-	current_id=(randi_range(0,MAX_INIT_INDEX))
+	current_id=(randi_range(0,Global.animated_sprites_sized_and_collision[Global.selected_sprite_name].size() - MAX_INIT_INDEX_DIFF))
 	current_type=[Global.selected_sprite_name,Global.TOY_PREFIX,Global.TOY_PREFIX][randi_range(0,2)]
 
 
@@ -44,18 +44,25 @@ func set_animation():
 	if Global.animated_sprites_sized_and_collision:
 		cats_and_balls.play(Global.animated_sprites_sized_and_collision[current_type][current_id].name)
 
+func remove_collision_polygon_child():
+	for child in get_children():
+		if child is CollisionPolygon2D:
+			child.queue_free()  # Safely removes and frees the node
+
 func update_animation_properties():
 	unit_score += (current_id + 1) * SCORE_MULTIPLIER
 	var scale_factor = Global.animated_sprites_sized_and_collision[current_type][current_id].scale
 	cats_and_balls.scale=scale_factor
 	var collision_polygon=create_collision_polygon(current_id,current_type)
+	collision_polygon.z_index=3
+	remove_collision_polygon_child()
 	call_deferred("add_child",collision_polygon)
-	self.mass =float(current_id + 1)
+	self.mass =float(pow(2,current_id + 1))
 	add_to_group(str(current_id))
 	
 func play_kabumm():
 	cats_and_balls.self_modulate.a=KABUM_OPPACITY
-	var kabumm_scale = (current_id+2)*IMAGE_SCALE_CONST/512.0
+	var kabumm_scale = (current_id+2)*Global.IMAGE_SCALE_CONST/512.0
 	kabum.visible=true
 	kabum.scale=Vector2(kabumm_scale,kabumm_scale)
 	kabum.play("kabum")
@@ -78,7 +85,7 @@ func _ready():
 	Global.score+=unit_score
 
 func _on_Ball_collided(ball):
-	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
+	if  ball is AnimalOrToy and ball.is_in_group(str(current_id)):
 		if ball.current_type == Global.TOY_PREFIX and current_id < Global.animated_sprites_sized_and_collision[Global.selected_sprite_name].size()-1:
 			var new_position = (self.position + ball.position) / 2
 			Global.score+=ball.unit_score+self.unit_score
@@ -94,6 +101,6 @@ func _on_Ball_collided(ball):
 			cats_and_balls.play(Global.animated_sprites_sized_and_collision[Global.FIGHT_PREFIX][current_id].name)
 
 func _on_collision_end(ball):
-	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
+	if  ball is AnimalOrToy and ball.is_in_group(str(current_id)):
 		if ball.current_type == Global.selected_sprite_name and self.current_type == Global.selected_sprite_name:
 			set_animation()

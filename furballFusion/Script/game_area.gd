@@ -40,16 +40,17 @@ func _input(event: InputEvent) -> void:
 		return
 	else:
 		# Find the child by name
-		if event.is_action_pressed("mouse_click") and animal_or_toy == null and get_viewport().get_mouse_position().y> lim_right.position.y+120 :
+		if event.is_action_pressed("mouse_click") and animal_or_toy == null and get_viewport().get_mouse_position().y> lim_right.position.y:
 			mouse_pressed = true
 			animal_or_toy = animal_or_toy_scene.instantiate()
-			animal_or_toy.position.y = lim_left.position.y
+			animal_or_toy.position.y = lim_right.position.y
 			#ball.position = Vector2(get_viewport().get_mouse_position().x, lim_left.position.y)
 			animal_or_toy.freeze = true
 			add_child(animal_or_toy)
 			# Start the cooldown timer after kiscica is added
 		
 		if event.is_action_released("mouse_click") and animal_or_toy != null:
+			animal_or_toy.position.y = lim_left.position.y
 			animal_or_toy.laser_visibility=false
 			mouse_pressed = false
 			animal_or_toy.freeze = false

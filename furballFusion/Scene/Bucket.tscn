@@ -3,48 +3,48 @@
 [ext_resource type="Texture2D" uid="uid://c3rxwfhswjwg8" path="res://Asset/Image/Img_BucketFrame.png" id="1_lgtty"]
 [ext_resource type="Script" path="res://Script/killzone.gd" id="2_dr8e1"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ri3fh"]
-a = Vector2(-313, 1)
-b = Vector2(311, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pf43"]
+size = Vector2(610, 24)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_qj3mv"]
-a = Vector2(-210, -13.9992)
-b = Vector2(999, -13.0036)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ggv4"]
+size = Vector2(1235, 33.0045)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_onw3g"]
-a = Vector2(629, -4.99771)
-b = Vector2(-575, 6.99792)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01ffc"]
+size = Vector2(1238, 32)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_g4vpo"]
-a = Vector2(306, 69)
-b = Vector2(-309, 69)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_en1hg"]
+size = Vector2(599, 22)
 
 [node name="Bucket" type="Node2D"]
 
 [node name="ImgBucketFrame" type="Sprite2D" parent="."]
-scale = Vector2(0.667544, 0.667544)
+position = Vector2(0, -76.0789)
+scale = Vector2(0.667544, 0.746793)
 texture = ExtResource("1_lgtty")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2DBottom" type="CollisionShape2D" parent="StaticBody2D"]
 visibility_layer = 2
-position = Vector2(0, 579)
-shape = SubResource("SegmentShape2D_ri3fh")
+position = Vector2(-4, 581)
+shape = SubResource("RectangleShape2D_1pf43")
+one_way_collision_margin = 10.0
 debug_color = Color(0.938219, 0.145116, 0.508151, 0.42)
 
 [node name="CollisionShape2DLeft" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-333, -421)
+position = Vector2(-325.5, -29.5001)
 rotation = 1.5708
-shape = SubResource("SegmentShape2D_qj3mv")
+shape = SubResource("RectangleShape2D_7ggv4")
+one_way_collision_margin = 10.0
 
 [node name="CollisionShape2DRight" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(306, 0)
+position = Vector2(316.998, -28)
 rotation = -1.5708
-shape = SubResource("SegmentShape2D_onw3g")
+shape = SubResource("RectangleShape2D_01ffc")
+one_way_collision_margin = 10.0
 
 [node name="ImgBucketFrame2" type="Sprite2D" parent="."]
-position = Vector2(-7.99994, -59)
+position = Vector2(-10, 75)
 rotation = 3.14159
 scale = Vector2(0.668, 0.668)
 texture = ExtResource("1_lgtty")
@@ -54,7 +54,8 @@ position = Vector2(-23, -645)
 script = ExtResource("2_dr8e1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, -62)
-shape = SubResource("SegmentShape2D_g4vpo")
+position = Vector2(20.5, 135)
+shape = SubResource("RectangleShape2D_en1hg")
+one_way_collision = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

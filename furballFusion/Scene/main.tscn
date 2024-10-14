@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2ybfw4fxd1b4"]
+[gd_scene load_steps=4 format=3 uid="uid://c0hpvqudo66j2"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_kefm0"]
 [ext_resource type="PackedScene" uid="uid://blspr8v2do5fm" path="res://Scene/GameArea.tscn" id="2_li680"]
@@ -13,32 +13,37 @@ scale = Vector2(1, 0.9)
 
 [node name="Score" type="RichTextLabel" parent="."]
 z_index = 5
-offset_left = 14.0
-offset_top = 59.0
-offset_right = 375.0
-offset_bottom = 122.0
+offset_left = 11.0
+offset_top = 64.0
+offset_right = 372.0
+offset_bottom = 127.0
 theme_override_font_sizes/normal_font_size = 45
 text = "Score: "
 fit_content = true
+scroll_active = false
+autowrap_mode = 0
 tab_size = 9
 metadata/_edit_use_anchors_ = true
 
 [node name="Highscore" type="RichTextLabel" parent="."]
 z_index = 5
-offset_left = 14.0
-offset_top = -4.0
-offset_right = 369.0
-offset_bottom = 71.0
+offset_left = 13.0
+offset_top = 3.0
+offset_right = 368.0
+offset_bottom = 78.0
 theme_override_font_sizes/normal_font_size = 45
 text = "Highscore: 0"
 fit_content = true
+scroll_active = false
+autowrap_mode = 0
 tab_size = 9
+drag_and_drop_selection_enabled = false
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuButton" type="Button" parent="."]
-offset_left = 473.0
+offset_left = 508.0
 offset_top = 15.0
-offset_right = 648.0
+offset_right = 683.0
 offset_bottom = 98.0
 theme_override_font_sizes/font_size = 40
 text = "MENU
