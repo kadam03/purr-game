@@ -1,3 +1,4 @@
+class_name AnimalOrToy
 extends RigidBody2D
 
 const MAX_INIT_INDEX_DIFF: int  = 3
@@ -84,7 +85,7 @@ func _ready():
 	Global.score+=unit_score
 
 func _on_Ball_collided(ball):
-	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
+	if  ball is AnimalOrToy and ball.is_in_group(str(current_id)):
 		if ball.current_type == Global.TOY_PREFIX and current_id < Global.animated_sprites_sized_and_collision[Global.selected_sprite_name].size()-1:
 			var new_position = (self.position + ball.position) / 2
 			Global.score+=ball.unit_score+self.unit_score
@@ -100,6 +101,6 @@ func _on_Ball_collided(ball):
 			cats_and_balls.play(Global.animated_sprites_sized_and_collision[Global.FIGHT_PREFIX][current_id].name)
 
 func _on_collision_end(ball):
-	if  ball is RigidBody2D and ball.is_in_group(str(current_id)):
+	if  ball is AnimalOrToy and ball.is_in_group(str(current_id)):
 		if ball.current_type == Global.selected_sprite_name and self.current_type == Global.selected_sprite_name:
 			set_animation()
